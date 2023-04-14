@@ -1,4 +1,5 @@
 QT       += core gui
+QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -10,14 +11,20 @@ CONFIG += c++17
 
 SOURCES += \
     adminlogin.cpp \
+    adminoptions.cpp \
+    dbhandler.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     adminlogin.h \
+    adminoptions.h \
+    dbConstance.h \
+    dbhandler.h \
     mainwindow.h
 
 FORMS += \
+    adminoptions.ui \
     mainwindow.ui
 
 # Default rules for deployment.
