@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1086</width>
+    <width>1133</width>
     <height>527</height>
    </rect>
   </property>
@@ -16,9 +16,9 @@
   <widget class="QTableWidget" name="stadiumDisplayWidget">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>10</x>
      <y>10</y>
-     <width>1031</width>
+     <width>1091</width>
      <height>251</height>
     </rect>
    </property>
