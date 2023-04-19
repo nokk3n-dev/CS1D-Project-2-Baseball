@@ -2,7 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include<adminpage.h>
+#include<startpage.h>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -16,7 +17,10 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_adminButton_clicked();
+
+    void on_Button_LogIn_clicked();
+
+    void on_Button_Guest_clicked();
 
 private:
     Ui::MainWindow *ui;
