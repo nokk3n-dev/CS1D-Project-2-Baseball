@@ -18,6 +18,10 @@ public:
 private slots:
     void on_kruskal_clicked();
 
+    void on_prims_clicked();
+
+    void on_shortest_path_clicked();
+
 private:
     Ui::planningTourPage *ui;
 };
