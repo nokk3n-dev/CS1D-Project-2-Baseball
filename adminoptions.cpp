@@ -29,12 +29,8 @@ void AdminOptions::showStadiums(Ui::AdminOptions* ui)
     QString distanceToCenter;
     QString ballparkTypology;
     QString roofType;
-    int id;
     int row = 0;
     int column = 0;
-
-
-    QTableWidgetItem *item = new QTableWidgetItem;
 
     ui->stadiumDisplayWidget->setColumnCount(10);
     ui->stadiumDisplayWidget->setRowCount(35);
@@ -64,6 +60,9 @@ void AdminOptions::showStadiums(Ui::AdminOptions* ui)
                             ballparkTypology = query1.value(8).toString();
                             roofType = query1.value(9).toString();
 
+                            // Create Team Object
+                            Team t(teamName.toStdString(), stadiumName.toStdString(), seatCapacity, location.toStdString(), playingSurface.toStdString(), league.toStdString(), dateOpened, ballparkTypology.toStdString(), roofType.toStdString());
+
                             ui->stadiumDisplayWidget->setItem(row,column++,new QTableWidgetItem(teamName));
                             ui->stadiumDisplayWidget->setItem(row,column++,new QTableWidgetItem(stadiumName));
                             ui->stadiumDisplayWidget->setItem(row,column++,new QTableWidgetItem(QString::number(seatCapacity)));
@@ -87,3 +86,9 @@ void AdminOptions::showStadiums(Ui::AdminOptions* ui)
             dbHandler.close();
         }
 }
+
+void AdminOptions::on_adminHomeButton_clicked()
+{
+    this->close();
+}
+
