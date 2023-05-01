@@ -14,16 +14,19 @@ SOURCES += \
     adminoptions.cpp \
     dbhandler.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    team.cpp
 
 HEADERS += \
     adminlogin.h \
     adminoptions.h \
     dbConstance.h \
     dbhandler.h \
-    mainwindow.h
+    mainwindow.h \
+    team.h
 
 FORMS += \
+    adminlogin.ui \
     adminoptions.ui \
     mainwindow.ui
 

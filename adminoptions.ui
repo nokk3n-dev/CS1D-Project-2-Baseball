@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1133</width>
-    <height>527</height>
+    <width>1150</width>
+    <height>550</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,11 +16,55 @@
   <widget class="QTableWidget" name="stadiumDisplayWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>1091</width>
+     <x>25</x>
+     <y>100</y>
+     <width>1100</width>
      <height>251</height>
     </rect>
+   </property>
+   <property name="cursor" stdset="0">
+    <cursorShape>ForbiddenCursor</cursorShape>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>325</x>
+     <y>30</y>
+     <width>500</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Stencil</family>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Admin Information</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="adminHomeButton">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>40</y>
+     <width>100</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Stencil</family>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Home</string>
    </property>
   </widget>
  </widget>

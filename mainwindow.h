@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPixmap>
+#include <QtWidgets>
+#include <QtGui>
+#include <QApplication>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,9 +18,14 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void UpdateDatabase();
 
 private slots:
     void on_adminButton_clicked();
+
+    void on_planTour_clicked();
+
+    void on_viewTeams_clicked();
 
 private:
     Ui::MainWindow *ui;
