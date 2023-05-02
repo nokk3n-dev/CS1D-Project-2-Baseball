@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>866</width>
-    <height>598</height>
+    <width>737</width>
+    <height>468</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QTableWidget" name="primsDisplayWidget">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>90</y>
+     <x>50</x>
+     <y>30</y>
      <width>611</width>
      <height>321</height>
     </rect>
