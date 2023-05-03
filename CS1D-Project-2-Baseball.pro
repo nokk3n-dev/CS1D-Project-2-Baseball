@@ -34,6 +34,7 @@ HEADERS += \
 FORMS += \
     adminlogin.ui \
     adminoptions.ui \
+    dialog.ui \
     kruskal.ui \
     mainwindow.ui \
     planningtourpage.ui \
