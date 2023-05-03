@@ -13,9 +13,11 @@ SOURCES += \
     adminlogin.cpp \
     adminoptions.cpp \
     dbhandler.cpp \
+    kruskal.cpp \
     main.cpp \
     mainwindow.cpp \
     planningtourpage.cpp \
+    prims.cpp \
     team.cpp
 
 HEADERS += \
@@ -23,15 +25,20 @@ HEADERS += \
     adminoptions.h \
     dbConstance.h \
     dbhandler.h \
+    kruskal.h \
     mainwindow.h \
     planningtourpage.h \
+    prims.h \
     team.h
 
 FORMS += \
     adminlogin.ui \
     adminoptions.ui \
+    dialog.ui \
+    kruskal.ui \
     mainwindow.ui \
-    planningtourpage.ui
+    planningtourpage.ui \
+    prims.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

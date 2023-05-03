@@ -40,6 +40,7 @@ DbHandler::DbHandler(QString dbPath, QString dbConnectionName)
          msgBox.exec();
      }
 
+     return false;
  }
 
  void DbHandler:: close()
