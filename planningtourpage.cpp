@@ -16,12 +16,14 @@ planningTourPage::~planningTourPage()
     delete ui;
 }
 
-
 void planningTourPage::on_kruskal_clicked()
 {
     kruskal go;
     go.setModal(true);
     go.exec();
+    
+void planningTourPage::on_kruskal_clicked()
+{
 
 }
 
@@ -35,11 +37,7 @@ void planningTourPage::on_prims_clicked()
 
 }
 
-/*
-
 void planningTourPage::on_shortest_path_clicked()
 {
 
 }
-
-*/

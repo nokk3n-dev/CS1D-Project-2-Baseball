@@ -18,6 +18,15 @@ MainWindow::MainWindow(QWidget *parent)
     movie->start();
     ui->testLabel->show();
 }
+
+    ui->testLabel->setWindowFlags(Qt::FramelessWindowHint);
+    ui->testLabel->setMask((new QPixmap("C:\\Coding\\CS1D-Project-2-Baseball\\CS1D-Project-2-Baseball\\Resources\\pitcher.gif"))->mask());
+
+    QMovie *movie = new QMovie("C:\\Coding\\CS1D-Project-2-Baseball\\CS1D-Project-2-Baseball\\Resources\\pitcher.gif");
+    ui->testLabel->setMovie(movie);
+    movie->start();
+    ui->testLabel->show();
+}
 MainWindow::~MainWindow()
 {
     delete ui;
