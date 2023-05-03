@@ -3,7 +3,7 @@
 
 #include <QString>
 
-const QString DATABASE_PATH = "/Users/carter/Documents/GitHub/CS1D-Project-2-Baseball/Baseball_Project.db";
+const QString DATABASE_PATH = "C:\\Coding\\CS1D-Project-2-Baseball\\CS1D-Project-2-Baseball\\Baseball_Project.db";
 const QString DATABASE_CONNECTION_NAME = "QSQLITE";
 
 const QString FAILED_MESSAGE_DATABASE_OPENING = "Failed to open the database!";

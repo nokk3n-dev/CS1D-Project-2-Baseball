@@ -11,9 +11,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     ui->testLabel->setWindowFlags(Qt::FramelessWindowHint);
-    ui->testLabel->setMask((new QPixmap("/Users/carter/Documents/GitHub/CS1D-Project-2-Baseball/Resources/pitcher.gif"))->mask());
+    ui->testLabel->setMask((new QPixmap("C:\\Coding\\CS1D-Project-2-Baseball\\CS1D-Project-2-Baseball\\Resources\\pitcher.gif"))->mask());
 
-    QMovie *movie = new QMovie("/Users/carter/Documents/GitHub/CS1D-Project-2-Baseball/Resources/pitcher.gif");
+    QMovie *movie = new QMovie("C:\\Coding\\CS1D-Project-2-Baseball\\CS1D-Project-2-Baseball\\Resources\\pitcher.gif");
     ui->testLabel->setMovie(movie);
     movie->start();
     ui->testLabel->show();
