@@ -1,8 +1,8 @@
 #include "mainwindow.h"
 #include "adminlogin.h"
 #include "ui_mainwindow.h"
-#include "adminoptions.h"
 #include "planningtourpage.h"
+#include "viewingpage.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -42,7 +42,7 @@ void MainWindow::on_planTour_clicked()
 
 void MainWindow::on_viewTeams_clicked()
 {
-    AdminOptions go;
+    ViewingPage go;
     go.setModal(true);
     go.exec();
 }

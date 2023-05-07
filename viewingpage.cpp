@@ -1,22 +1,29 @@
-#include "adminoptions.h"
-#include "ui_adminoptions.h"
+#include "viewingpage.h"
+#include "ui_viewingpage.h"
 
-AdminOptions::AdminOptions(QWidget *parent) :
+ViewingPage::ViewingPage(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AdminOptions)
+    ui(new Ui::ViewingPage)
 {
     ui->setupUi(this);
-    ui->stadiumDisplayWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->teamView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     showStadiums(ui);
 }
 
-AdminOptions::~AdminOptions()
+ViewingPage::~ViewingPage()
 {
     delete ui;
 }
 
+void ViewingPage::on_sortBox_currentTextChanged(const QString &sortOption)
+{
+    if (sortOption == "Typology")
+    {
+//        showStadiums(ui);
+    }
+}
 
-void AdminOptions::showStadiums(Ui::AdminOptions* ui)
+void ViewingPage::showStadiums(Ui::ViewingPage* ui)
 {
     QMessageBox msgBox;
     QString teamName;
@@ -32,13 +39,13 @@ void AdminOptions::showStadiums(Ui::AdminOptions* ui)
     int row = 0;
     int column = 0;
 
-    ui->stadiumDisplayWidget->setColumnCount(10);
-    ui->stadiumDisplayWidget->setRowCount(35);
+    ui->teamView->setColumnCount(10);
+    ui->teamView->setRowCount(35);
 
 
     QStringList labels = { "Team Name","Stadium Name", "Seat Capacity", "Location", "Playing Surface", "League",
                            "Date Opened", "Distance to Center Field", "Ballpark Typology", "Roof Type"};
-    ui->stadiumDisplayWidget->setHorizontalHeaderLabels(labels);
+    ui->teamView->setHorizontalHeaderLabels(labels);
 
 
     DbHandler dbHandler(DATABASE_PATH,DATABASE_CONNECTION_NAME);
@@ -63,16 +70,16 @@ void AdminOptions::showStadiums(Ui::AdminOptions* ui)
                             // Create Team Object
                             Team t(teamName.toStdString(), stadiumName.toStdString(), seatCapacity, location.toStdString(), playingSurface.toStdString(), league.toStdString(), dateOpened, distanceToCenter, ballparkTypology.toStdString(), roofType.toStdString());
 
-                            ui->stadiumDisplayWidget->setItem(row,column++,new QTableWidgetItem(teamName));
-                            ui->stadiumDisplayWidget->setItem(row,column++,new QTableWidgetItem(stadiumName));
-                            ui->stadiumDisplayWidget->setItem(row,column++,new QTableWidgetItem(QString::number(seatCapacity)));
-                            ui->stadiumDisplayWidget->setItem(row,column++,new QTableWidgetItem(location));
-                            ui->stadiumDisplayWidget->setItem(row,column++,new QTableWidgetItem(playingSurface));
-                            ui->stadiumDisplayWidget->setItem(row,column++,new QTableWidgetItem(league));
-                            ui->stadiumDisplayWidget->setItem(row,column++,new QTableWidgetItem(QString::number(dateOpened)));
-                            ui->stadiumDisplayWidget->setItem(row,column++,new QTableWidgetItem(QString::number(distanceToCenter)));
-                            ui->stadiumDisplayWidget->setItem(row,column++,new QTableWidgetItem(ballparkTypology));
-                            ui->stadiumDisplayWidget->setItem(row,column++,new QTableWidgetItem(roofType));
+                            ui->teamView->setItem(row,column++,new QTableWidgetItem(teamName));
+                            ui->teamView->setItem(row,column++,new QTableWidgetItem(stadiumName));
+                            ui->teamView->setItem(row,column++,new QTableWidgetItem(QString::number(seatCapacity)));
+                            ui->teamView->setItem(row,column++,new QTableWidgetItem(location));
+                            ui->teamView->setItem(row,column++,new QTableWidgetItem(playingSurface));
+                            ui->teamView->setItem(row,column++,new QTableWidgetItem(league));
+                            ui->teamView->setItem(row,column++,new QTableWidgetItem(QString::number(dateOpened)));
+                            ui->teamView->setItem(row,column++,new QTableWidgetItem(QString::number(distanceToCenter)));
+                            ui->teamView->setItem(row,column++,new QTableWidgetItem(ballparkTypology));
+                            ui->teamView->setItem(row,column++,new QTableWidgetItem(roofType));
 
                             column = 0;
                             row++;
@@ -85,10 +92,5 @@ void AdminOptions::showStadiums(Ui::AdminOptions* ui)
             msgBox.exec();
             dbHandler.close();
         }
-}
-
-void AdminOptions::on_adminHomeButton_clicked()
-{
-    this->close();
 }
 

@@ -18,7 +18,8 @@ SOURCES += \
     mainwindow.cpp \
     planningtourpage.cpp \
     prims.cpp \
-    team.cpp
+    team.cpp \
+    viewingpage.cpp
 
 HEADERS += \
     adminlogin.h \
@@ -29,7 +30,8 @@ HEADERS += \
     mainwindow.h \
     planningtourpage.h \
     prims.h \
-    team.h
+    team.h \
+    viewingpage.h
 
 FORMS += \
     adminlogin.ui \
@@ -38,7 +40,8 @@ FORMS += \
     kruskal.ui \
     mainwindow.ui \
     planningtourpage.ui \
-    prims.ui
+    prims.ui \
+    viewingpage.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

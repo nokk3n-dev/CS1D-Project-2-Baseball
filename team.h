@@ -15,7 +15,6 @@ public:
     // Constructors
     Team();
     Team(string name, string stadium, int capacity, string location, string surface, string league, int date, int distance, string typology, string roof);
-    Team(string name, string stadium, int capacity, string location, string surface, string league, int date, string typology, string roof);
     Team(const Team &t);
     ~Team();
 

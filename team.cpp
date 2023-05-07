@@ -9,10 +9,6 @@ Team::Team(string name, string stadium, int capacity, string location, string su
     team_name{name}, stadium_name{stadium}, seat_capacity{capacity}, location{location}, playing_surface{surface}, league{league}, date_opened{date}, distance_to_center{distance}, ballpark_typology{typology}, roof_type{roof}
 { }
 
-Team::Team(string name, string stadium, int capacity, string location, string surface, string league, int date, string typology, string roof):
-    team_name{name}, stadium_name{stadium}, seat_capacity{capacity}, location{location}, playing_surface{surface}, league{league}, date_opened{date}, distance_to_center{980}, ballpark_typology{typology}, roof_type{roof}
-{ }
-
 Team::Team(const Team &t) :
     team_name{t.team_name}, stadium_name{t.stadium_name}, seat_capacity{t.seat_capacity}, location{t.location}, playing_surface{t.playing_surface}, league{t.league}, date_opened{t.date_opened}, distance_to_center{t.distance_to_center}, ballpark_typology{t.ballpark_typology}, roof_type{t.roof_type}
 { }
