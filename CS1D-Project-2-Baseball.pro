@@ -31,6 +31,7 @@ HEADERS += \
     planningtourpage.h \
     prims.h \
     team.h \
+    teamList.h \
     viewingpage.h
 
 FORMS += \

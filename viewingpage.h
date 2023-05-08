@@ -3,9 +3,9 @@
 
 #include <QDialog>
 #include <QMessageBox>
-#include "dbhandler.h"
 #include "team.h"
 #include <QSqlQuery>
+#include "teamList.h"
 
 namespace Ui {
 class ViewingPage;
@@ -19,6 +19,7 @@ public:
     explicit ViewingPage(QWidget *parent = nullptr);
     ~ViewingPage();
     void showStadiums(Ui::ViewingPage* ui);
+    TeamList<Team> teamList;
 
 private slots:
     void on_sortBox_currentTextChanged(const QString &arg1);

@@ -20,6 +20,7 @@ public:
 
     // Getter function
     string getName();
+    string getStadium();
     int getCapacity();
     string getLocation();
     string getSurface();
@@ -28,6 +29,8 @@ public:
     int getDTC();
     string getTypology();
     string getRoof();
+
+    Team* operator=(const Team &t);
 
 protected:
 
