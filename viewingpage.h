@@ -28,7 +28,6 @@ public:
     void sortByDate();
     void showGreatestDTC();
     void showSmallestDTC();
-    TeamList<Team> teamList;
 
 private slots:
     void on_sortBox_currentTextChanged(const QString &arg1);
