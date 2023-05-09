@@ -1,8 +1,8 @@
 #include "mainwindow.h"
-#include "adminlogin.h"
 #include "ui_mainwindow.h"
-#include "adminoptions.h"
+#include "adminlogin.h"
 #include "planningtourpage.h"
+#include "viewingpage.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -10,9 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Setting up the background
     ui->testLabel->setWindowFlags(Qt::FramelessWindowHint);
     ui->testLabel->setMask((new QPixmap("C:\\Coding\\CS1D-Project-2-Baseball\\CS1D-Project-2-Baseball\\Resources\\pitcher.gif"))->mask());
-
     QMovie *movie = new QMovie("C:\\Coding\\CS1D-Project-2-Baseball\\CS1D-Project-2-Baseball\\Resources\\pitcher.gif");
     ui->testLabel->setMovie(movie);
     movie->start();
@@ -42,7 +42,7 @@ void MainWindow::on_planTour_clicked()
 
 void MainWindow::on_viewTeams_clicked()
 {
-    AdminOptions go;
+    ViewingPage go;
     go.setModal(true);
     go.exec();
 }

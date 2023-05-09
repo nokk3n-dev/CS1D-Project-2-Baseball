@@ -4,8 +4,9 @@
 #include <QDialog>
 #include <QMessageBox>
 #include "dbhandler.h"
-#include "team.h"
 #include <QSqlQuery>
+#include "team.h"
+#include "teamList.h"
 
 namespace Ui {
 class AdminOptions;
@@ -25,6 +26,7 @@ private slots:
 
 private:
     Ui::AdminOptions *ui;
+    TeamList<Team> teamList;
 };
 
 #endif // ADMINOPTIONS_H

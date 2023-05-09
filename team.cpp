@@ -9,10 +9,6 @@ Team::Team(string name, string stadium, int capacity, string location, string su
     team_name{name}, stadium_name{stadium}, seat_capacity{capacity}, location{location}, playing_surface{surface}, league{league}, date_opened{date}, distance_to_center{distance}, ballpark_typology{typology}, roof_type{roof}
 { }
 
-Team::Team(string name, string stadium, int capacity, string location, string surface, string league, int date, string typology, string roof):
-    team_name{name}, stadium_name{stadium}, seat_capacity{capacity}, location{location}, playing_surface{surface}, league{league}, date_opened{date}, distance_to_center{980}, ballpark_typology{typology}, roof_type{roof}
-{ }
-
 Team::Team(const Team &t) :
     team_name{t.team_name}, stadium_name{t.stadium_name}, seat_capacity{t.seat_capacity}, location{t.location}, playing_surface{t.playing_surface}, league{t.league}, date_opened{t.date_opened}, distance_to_center{t.distance_to_center}, ballpark_typology{t.ballpark_typology}, roof_type{t.roof_type}
 { }
@@ -21,6 +17,7 @@ Team::~Team() { }
 
 // Getter functions
 string Team::getName() { return team_name; }
+string Team::getStadium() { return stadium_name; }
 int Team::getCapacity() { return seat_capacity; }
 string Team::getLocation() { return location; }
 string Team::getSurface() { return playing_surface; }
@@ -29,3 +26,11 @@ int Team::getDate() { return date_opened; }
 int Team::getDTC() { return distance_to_center; }
 string Team::getTypology() { return ballpark_typology; }
 string Team::getRoof() { return roof_type; }
+
+// Overloaded operator
+Team* Team::operator=(const Team& t)
+{
+    Team *temp = new Team(t.team_name, t.stadium_name, t.seat_capacity, t.location, t.playing_surface, t.league, t.date_opened, t.distance_to_center, t.ballpark_typology, t.roof_type);
+
+    return temp;
+}
