@@ -567,10 +567,12 @@ void ViewingPage::showStadiums(Ui::ViewingPage* ui, TeamList<Team> list)
     ui->teamView->setColumnWidth(0, 130);
     ui->teamView->setColumnWidth(1, 210);
     ui->teamView->setColumnWidth(2, 65);
-    ui->teamView->setColumnWidth(3, 130);
+    ui->teamView->setColumnWidth(3, 150);
+    ui->teamView->setColumnWidth(4, 90);
     ui->teamView->setColumnWidth(5, 65);
     ui->teamView->setColumnWidth(6, 65);
     ui->teamView->setColumnWidth(7, 110);
+    ui->teamView->setColumnWidth(8, 90);
     ui->teamView->setColumnWidth(9, 80);
 
     // Set the names of the columns
