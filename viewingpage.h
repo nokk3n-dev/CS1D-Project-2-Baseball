@@ -19,15 +19,15 @@ public:
     explicit ViewingPage(QWidget *parent = nullptr);
     ~ViewingPage();
     void showStadiums(Ui::ViewingPage* ui, TeamList<Team> list);
-    void sortByTeam(Ui::ViewingPage* ui);
-    void sortByStadiumName(Ui::ViewingPage* ui);
-    void sortBySeat(Ui::ViewingPage* ui);
-    void sortByLeague(Ui::ViewingPage* ui, string league);
-    void sortByTypology(Ui::ViewingPage* ui);
-    void showOpenRoof(Ui::ViewingPage* ui);
-    void sortByDate(Ui::ViewingPage* ui);
-    void showGreatestDTC(Ui::ViewingPage* ui);
-    void showSmallestDTC(Ui::ViewingPage* ui);
+    void sortByTeam();
+    void sortByStadiumName();
+    void sortBySeat();
+    void sortByLeague(string league);
+    void sortByTypology();
+    void showOpenRoof();
+    void sortByDate();
+    void showGreatestDTC();
+    void showSmallestDTC();
     TeamList<Team> teamList;
 
 private slots:

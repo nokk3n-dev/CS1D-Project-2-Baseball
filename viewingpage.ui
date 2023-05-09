@@ -74,6 +74,11 @@
    </item>
    <item>
     <property name="text">
+     <string>Open Roof</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
      <string>Greatest Distance to Centre Field</string>
     </property>
    </item>
