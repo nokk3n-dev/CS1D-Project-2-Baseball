@@ -1,6 +1,7 @@
 #include "viewingpage.h"
 #include "ui_viewingpage.h"
 #include "dbhandler.h"
+#include <QWidget>
 
 ViewingPage::ViewingPage(QWidget *parent) :
     QDialog(parent),
@@ -8,6 +9,17 @@ ViewingPage::ViewingPage(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->teamView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    // Set up background
+    QPixmap bkgnd("C:\\Coding\\CS1D-Project-2-Baseball\\CS1D-Project-2-Baseball\\Resources\\viewingPage.jpg");
+    bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, bkgnd);
+    this->setPalette(palette);
+
+    // Set up text color
+//    ui->baseballTeamsLabel->setText("<font color='white'>Baseball Teams</font>");
+//    ui->sortByLabel->setText("<font color='white'>Sort By</font>");
 
     // Get data from database
     QMessageBox msgBox;
@@ -551,9 +563,19 @@ void ViewingPage::showStadiums(Ui::ViewingPage* ui, TeamList<Team> list)
     ui->teamView->setColumnCount(10);
     ui->teamView->setRowCount(35);
 
+    // Fix column widths
+    ui->teamView->setColumnWidth(0, 130);
+    ui->teamView->setColumnWidth(1, 210);
+    ui->teamView->setColumnWidth(2, 65);
+    ui->teamView->setColumnWidth(3, 130);
+    ui->teamView->setColumnWidth(5, 65);
+    ui->teamView->setColumnWidth(6, 65);
+    ui->teamView->setColumnWidth(7, 110);
+    ui->teamView->setColumnWidth(9, 80);
+
     // Set the names of the columns
-    QStringList labels = { "Team Name","Stadium Name", "Seat Capacity", "Location", "Playing Surface", "League",
-                           "Date Opened", "Distance to Center Field", "Ballpark Typology", "Roof Type"};
+    QStringList labels = { "Team Name","Stadium Name", "Capacity", "Location", "Playing Surface", "League",
+                           "Opened", "Distance to Center", "Ballpark Type", "Roof Type"};
     ui->teamView->setHorizontalHeaderLabels(labels);
 
     // Create current node for iteration
