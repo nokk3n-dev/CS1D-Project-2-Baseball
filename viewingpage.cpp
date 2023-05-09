@@ -44,7 +44,7 @@ ViewingPage::ViewingPage(QWidget *parent) :
             dbHandler.close();
         }
 
-    showStadiums(ui);
+    showStadiums(ui, teamList);
 }
 
 ViewingPage::~ViewingPage()
@@ -54,13 +54,52 @@ ViewingPage::~ViewingPage()
 
 void ViewingPage::on_sortBox_currentTextChanged(const QString &sortOption)
 {
-    if (sortOption == "Typology")
+    if (sortOption == "Team Name")
     {
-        showStadiums(ui);
+        sortByTeam(ui);
+    } else if (sortOption == "Stadium Name")
+    {
+        sortByStadiumName(ui);
+    } else if (sortOption == "American League")
+    {
+        sortByLeague(ui, sortOption.toStdString());
+    } else if (sortOption == "National League")
+    {
+        sortByLeague(ui, sortOption.toStdString());
+    } else if (sortOption == "Typology")
+    {
+        sortByTypology(ui);
+    } else if (sortOption == "Date Opened")
+    {
+        sortByDate(ui);
+    } else if (sortOption == "Seating Capcity")
+    {
+        sortBySeat(ui);
     }
 }
 
-void ViewingPage::showStadiums(Ui::ViewingPage* ui)
+void ViewingPage::sortByTeam(Ui::ViewingPage* ui)
+{
+
+}
+
+void ViewingPage::sortByStadiumName(Ui::ViewingPage* ui) { }
+
+void ViewingPage::sortBySeat(Ui::ViewingPage* ui) { }
+
+void ViewingPage::sortByLeague(Ui::ViewingPage* ui, string league) { }
+
+void ViewingPage::sortByTypology(Ui::ViewingPage* ui) { }
+
+void ViewingPage::showOpenRoof(Ui::ViewingPage* ui) { }
+
+void ViewingPage::sortByDate(Ui::ViewingPage* ui) { }
+
+void ViewingPage::showGreatestDTC(Ui::ViewingPage* ui) { }
+
+void ViewingPage::showSmallestDTC(Ui::ViewingPage* ui) { }
+
+void ViewingPage::showStadiums(Ui::ViewingPage* ui, TeamList<Team> list)
 {
     // Row and Column variables
     int row = 0;
@@ -76,7 +115,7 @@ void ViewingPage::showStadiums(Ui::ViewingPage* ui)
     ui->teamView->setHorizontalHeaderLabels(labels);
 
     // Create current node for iteration
-    TeamNode<Team> *currentNode = teamList.getHead();
+    TeamNode<Team> *currentNode = list.getHead();
     while(currentNode != nullptr)
     {
         // Get all the data from the node

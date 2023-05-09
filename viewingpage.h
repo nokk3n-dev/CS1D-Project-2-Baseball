@@ -18,7 +18,16 @@ class ViewingPage : public QDialog
 public:
     explicit ViewingPage(QWidget *parent = nullptr);
     ~ViewingPage();
-    void showStadiums(Ui::ViewingPage* ui);
+    void showStadiums(Ui::ViewingPage* ui, TeamList<Team> list);
+    void sortByTeam(Ui::ViewingPage* ui);
+    void sortByStadiumName(Ui::ViewingPage* ui);
+    void sortBySeat(Ui::ViewingPage* ui);
+    void sortByLeague(Ui::ViewingPage* ui, string league);
+    void sortByTypology(Ui::ViewingPage* ui);
+    void showOpenRoof(Ui::ViewingPage* ui);
+    void sortByDate(Ui::ViewingPage* ui);
+    void showGreatestDTC(Ui::ViewingPage* ui);
+    void showSmallestDTC(Ui::ViewingPage* ui);
     TeamList<Team> teamList;
 
 private slots:
