@@ -12,24 +12,28 @@ CONFIG += c++17
 SOURCES += \
     adminlogin.cpp \
     adminoptions.cpp \
+    customtrippage.cpp \
     dbhandler.cpp \
     kruskal.cpp \
     main.cpp \
     mainwindow.cpp \
     planningtourpage.cpp \
     prims.cpp \
+    stadiumtrippage.cpp \
     team.cpp \
     viewingpage.cpp
 
 HEADERS += \
     adminlogin.h \
     adminoptions.h \
+    customtrippage.h \
     dbConstance.h \
     dbhandler.h \
     kruskal.h \
     mainwindow.h \
     planningtourpage.h \
     prims.h \
+    stadiumtrippage.h \
     team.h \
     teamList.h \
     viewingpage.h
@@ -37,11 +41,13 @@ HEADERS += \
 FORMS += \
     adminlogin.ui \
     adminoptions.ui \
+    customtrippage.ui \
     dialog.ui \
     kruskal.ui \
     mainwindow.ui \
     planningtourpage.ui \
     prims.ui \
+    stadiumtrippage.ui \
     viewingpage.ui
 
 # Default rules for deployment.
