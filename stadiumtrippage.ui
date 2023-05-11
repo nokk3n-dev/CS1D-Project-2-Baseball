@@ -16,9 +16,9 @@
   <widget class="QLabel" name="StadiumText">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>0</x>
      <y>0</y>
-     <width>491</width>
+     <width>641</width>
      <height>81</height>
     </rect>
    </property>
@@ -76,9 +76,9 @@
   <widget class="QLabel" name="WelcomeText">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>0</x>
      <y>70</y>
-     <width>551</width>
+     <width>631</width>
      <height>71</height>
     </rect>
    </property>
@@ -93,6 +93,28 @@
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="WelcomeText_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>400</y>
+     <width>391</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Distance Traveled:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
  </widget>
