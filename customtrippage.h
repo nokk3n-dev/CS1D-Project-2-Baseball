@@ -25,6 +25,8 @@ private slots:
 
 private:
     Ui::CustomTripPage *ui;
+    TeamList<Team> TripList;
+    TeamList<Team> TeamList;
 };
 
 #endif // CUSTOMTRIPPAGE_H

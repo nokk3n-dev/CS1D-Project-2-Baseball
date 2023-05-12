@@ -95,7 +95,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="WelcomeText_2">
+  <widget class="QLabel" name="DistanceText">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -111,7 +111,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Distance Traveled:</string>
+    <string>Distance Traveled: 0 Miles</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

@@ -42,9 +42,9 @@ void planningTourPage::on_Trip_Button_clicked()
 {
     if(this->ui->Trip_Selection->currentText()==QString::fromStdString("Dodger Stadium Dijkstra Trip")){
         //Option 1: Start at Dodger Stadium & visit any other stadium of the user's choice. Use Dijkstra or A* algorithm to determine shortest path
-        StadiumTripPage tripPage;
-        tripPage.setModal(true);
-        tripPage.exec();
+//        StadiumTripPage tripPage;
+//        tripPage.setModal(true);
+//        tripPage.exec();
 //        tripPage.setTrip(this->ui->Trip_Selection->currentText());
     } else if (this->ui->Trip_Selection->currentText()=="Custom Trip"){
         //Option 2: Plan a custom trip with a designated order of visiting each stadium
@@ -52,9 +52,9 @@ void planningTourPage::on_Trip_Button_clicked()
         tripPage.setModal(true);
         tripPage.exec();
     }else if (this->ui->Trip_Selection->currentText()==QString::fromStdString("Miami Marlins Circuit Trip")){
-        StadiumTripPage tripPage;
-        tripPage.setModal(true);
-        tripPage.exec();
+//        StadiumTripPage tripPage;
+//        tripPage.setModal(true);
+//        tripPage.exec();
 //        tripPage.setTrip(this->ui->Trip_Selection->currentText());
         //Option 3: Start at the Miami Marlins stadium and visit all other stadiums while traveling the shortest distance
     }else if (this->ui->Trip_Selection->currentText()=="Efficient Trip"){
