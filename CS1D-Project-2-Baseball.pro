@@ -16,9 +16,12 @@ SOURCES += \
     kruskal.cpp \
     main.cpp \
     mainwindow.cpp \
+    map.cpp \
     planningtourpage.cpp \
     prims.cpp \
+    souvenir.cpp \
     team.cpp \
+    unordermap.cpp \
     viewingpage.cpp
 
 HEADERS += \
@@ -28,10 +31,13 @@ HEADERS += \
     dbhandler.h \
     kruskal.h \
     mainwindow.h \
+    map.h \
     planningtourpage.h \
     prims.h \
+    souvenir.h \
     team.h \
     teamList.h \
+    unorderedmap.h \
     viewingpage.h
 
 FORMS += \
