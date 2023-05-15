@@ -11,7 +11,7 @@ ViewingPage::ViewingPage(QWidget *parent) :
     ui->teamView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     // Set up background
-    QPixmap bkgnd("C:\\Coding\\CS1D-Project-2-Baseball\\CS1D-Project-2-Baseball\\Resources\\viewingPage.jpg");
+    QPixmap bkgnd("/Users/carter/Documents/GitHub/CS1D-Project-2-Baseball/Resources/viewingPage.jpg");
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Window, bkgnd);

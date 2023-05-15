@@ -49,7 +49,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Dijkstra's / A*'s</string>
+    <string>Dijkstra's</string>
    </property>
   </widget>
  </widget>

@@ -3,6 +3,7 @@
 #include "planningtourpage.h"
 #include "prims.h"
 #include "kruskal.h"
+#include "dijk.h"
 
 planningTourPage::planningTourPage(QWidget *parent) :
     QDialog(parent),
@@ -35,4 +36,7 @@ void planningTourPage::on_prims_clicked()
 void planningTourPage::on_shortest_path_clicked()
 {
 
+    dijk go;
+    go.setModal(true);
+    go.exec();
 }
