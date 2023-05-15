@@ -14,6 +14,7 @@ SOURCES += \
     adminoptions.cpp \
     customtrippage.cpp \
     dbhandler.cpp \
+    dfsbfspage.cpp \
     kruskal.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -24,11 +25,13 @@ SOURCES += \
     viewingpage.cpp
 
 HEADERS += \
+    TeamGraph.h \
     adminlogin.h \
     adminoptions.h \
     customtrippage.h \
     dbConstance.h \
     dbhandler.h \
+    dfsbfspage.h \
     kruskal.h \
     mainwindow.h \
     planningtourpage.h \
@@ -42,6 +45,7 @@ FORMS += \
     adminlogin.ui \
     adminoptions.ui \
     customtrippage.ui \
+    dfsbfspage.ui \
     dialog.ui \
     kruskal.ui \
     mainwindow.ui \
