@@ -143,28 +143,30 @@ void dijk::showData(Ui::dijk* ui)
     dijkstra(dijkGraph, starting, target);
 
 
+    //TODO:
+    //1. Pull master branch from github so you have the other trip UI/files
+    //2.
+//    QString pathName;
 
-    QString pathName;
 
 
+//    ui->dijkTableWidget->setColumnCount(2);
+//    ui->dijkTableWidget->setRowCount(15);
+//    QStringList labels = { "Distance", "path"};
 
-    ui->dijkTableWidget->setColumnCount(2);
-    ui->dijkTableWidget->setRowCount(15);
-    QStringList labels = { "Distance", "path"};
+//    ui->dijkTableWidget->setHorizontalHeaderLabels(labels);
 
-    ui->dijkTableWidget->setHorizontalHeaderLabels(labels);
+//    ui->dijkTableWidget->setItem(0,0,new QTableWidgetItem(QString::number(dijkDistance)));
+//    int row = 0;
+//    int size = pathForDijk.size();
+//    for(int i = 0; i < size; i++)
+//    {
+//        string path;
+//        path = dijkIndexToCity[pathForDijk[i]];
+//        pathName = QString::fromStdString(path);
+//        ui->dijkTableWidget->setItem(row++,1,new QTableWidgetItem(pathName));
 
-    ui->dijkTableWidget->setItem(0,0,new QTableWidgetItem(QString::number(dijkDistance)));
-    int row = 0;
-    int size = pathForDijk.size();
-    for(int i = 0; i < size; i++)
-    {
-        string path;
-        path = dijkIndexToCity[pathForDijk[i]];
-        pathName = QString::fromStdString(path);
-        ui->dijkTableWidget->setItem(row++,1,new QTableWidgetItem(pathName));
-
-    }
+//    }
 
 
 
