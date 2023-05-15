@@ -1,17 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>DfsBfsPage</class>
- <widget name="DfsBfsPage" class="QDialog">
+ <widget class="QDialog" name="DfsBfsPage">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <widget class="QPushButton" name="dfs_button">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>450</y>
+     <width>300</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>30</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>DFS</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bfs_button">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>450</y>
+     <width>300</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>30</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>BFS</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="teamView">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>60</y>
+     <width>600</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::NoEditTriggers</set>
+   </property>
+   <property name="showGrid">
+    <bool>true</bool>
+   </property>
+   <property name="gridStyle">
+    <enum>Qt::SolidLine</enum>
+   </property>
+   <property name="sortingEnabled">
+    <bool>false</bool>
+   </property>
+   <property name="cornerButtonEnabled">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="distanceLabel">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>310</y>
+     <width>300</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>40</pointsize>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

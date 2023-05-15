@@ -18,6 +18,11 @@ public:
     void DFS();
     void BFS();
 
+private slots:
+    void on_dfs_button_clicked();
+
+    void on_bfs_button_clicked();
+
 private:
     Ui::DfsBfsPage *ui;
 };
