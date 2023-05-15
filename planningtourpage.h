@@ -22,6 +22,12 @@ private slots:
 
     void on_shortest_path_clicked();
 
+    void on_Trip_Button_clicked();
+
+    void on_dfs_clicked();
+
+    void on_bfs_clicked();
+
 private:
     Ui::planningTourPage *ui;
 };
