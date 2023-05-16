@@ -7,6 +7,9 @@
 #include <QSqlQuery>
 #include "team.h"
 #include "teamList.h"
+#include "global.h"
+#include <QFileDialog>
+#include <fstream>
 
 namespace Ui {
 class AdminOptions;
@@ -23,6 +26,16 @@ public:
 
 private slots:
     void on_adminHomeButton_clicked();
+
+    void on_adminAddStad_clicked();
+
+    void on_adminAddSouv_clicked();
+
+    void on_adminChaStad_clicked();
+
+    void on_adminDelSouv_clicked();
+
+    void on_AcceptDelete_clicked();
 
 private:
     Ui::AdminOptions *ui;

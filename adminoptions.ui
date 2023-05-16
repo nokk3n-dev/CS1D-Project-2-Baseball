@@ -13,46 +13,314 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QTableWidget" name="stadiumDisplayWidget">
+  <widget class="QStackedWidget" name="Stack">
    <property name="geometry">
     <rect>
-     <x>25</x>
-     <y>100</y>
-     <width>1100</width>
-     <height>251</height>
+     <x>-1</x>
+     <y>-1</y>
+     <width>1151</width>
+     <height>551</height>
     </rect>
    </property>
-   <property name="cursor" stdset="0">
-    <cursorShape>ForbiddenCursor</cursorShape>
+   <property name="currentIndex">
+    <number>2</number>
    </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>325</x>
-     <y>30</y>
-     <width>500</width>
-     <height>50</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Stencil</family>
-     <pointsize>30</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Admin Information</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
+   <widget class="QWidget" name="AddSouv">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <widget class="QPushButton" name="AcceptAddSouv">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>410</y>
+       <width>171</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add Souvenir</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="AddSouvText">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>90</y>
+       <width>391</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add Souvenir</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>180</y>
+       <width>521</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="AddLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelStadName">
+        <property name="text">
+         <string>Stadium Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="addSouvStadiumComboBox"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="labelSouvName">
+        <property name="text">
+         <string>Souvenir Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="textNewSouvName"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="labelSouvPrice">
+        <property name="text">
+         <string>Souvenir Price</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="textNewSouvPrice"/>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="AdminHome">
+    <widget class="QLabel" name="AdminInfoText">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>30</y>
+       <width>500</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Stencil</family>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Admin Information</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>440</y>
+       <width>881</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="Options">
+      <item>
+       <widget class="QPushButton" name="adminAddStad">
+        <property name="text">
+         <string>Add Stadium (INPUT)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="adminChaStad">
+        <property name="text">
+         <string>Change Stadium</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="adminAddSouv">
+        <property name="text">
+         <string>Add Souvenir</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="adminChaSouv">
+        <property name="text">
+         <string>Change Souvenir Price</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="adminDelSouv">
+        <property name="text">
+         <string>Delete Souvenir</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QTableWidget" name="stadiumDisplayWidget">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>90</y>
+       <width>1100</width>
+       <height>311</height>
+      </rect>
+     </property>
+     <property name="cursor" stdset="0">
+      <cursorShape>ForbiddenCursor</cursorShape>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="DeleteSouv">
+    <widget class="QPushButton" name="AcceptDelete">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>410</y>
+       <width>171</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Delete Souvenir</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>180</y>
+       <width>521</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="DeleteLayout">
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="textDeleteSouvName"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="removeSouvStadiumComboBox"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelStadName_5">
+        <property name="text">
+         <string>Stadium Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="labelSouvName_5">
+        <property name="text">
+         <string>Souvenir Name</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QLabel" name="DeleteSouvText">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>50</y>
+       <width>331</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Delete Souvenir</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="ChangeSouvPrice">
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>200</y>
+       <width>521</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="ChangeLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelStadName_3">
+        <property name="text">
+         <string>Stadium Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="changeSouvStadiumComboBox"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="labelSouvName_3">
+        <property name="text">
+         <string>Souvenir Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="textChangeName"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="labelSouvPrice_3">
+        <property name="text">
+         <string>New Price</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="textChangePrice"/>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QPushButton" name="AcceptChangePrice">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>430</y>
+       <width>171</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Change Price</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="ChangeSouvText">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>120</y>
+       <width>501</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Change Souvenir's Price</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QPushButton" name="adminHomeButton">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>40</y>
+     <x>10</x>
+     <y>10</y>
      <width>100</width>
      <height>25</height>
     </rect>

@@ -16,7 +16,6 @@ SOURCES += \
     kruskal.cpp \
     main.cpp \
     mainwindow.cpp \
-    map.cpp \
     planningtourpage.cpp \
     prims.cpp \
     souvenir.cpp \
@@ -29,9 +28,9 @@ HEADERS += \
     adminoptions.h \
     dbConstance.h \
     dbhandler.h \
+    global.h \
     kruskal.h \
     mainwindow.h \
-    map.h \
     planningtourpage.h \
     prims.h \
     souvenir.h \

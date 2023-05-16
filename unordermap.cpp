@@ -41,7 +41,23 @@ vector<Souvenir>::iterator Map::find(string key)
     return iter;
 }
 
-vector<Souvenir>::iterator Map::insert(string key, Souvenir stadium)
+void Map::insert(string key){
+    vector<Souvenir>::iterator iter = find(key);
+
+    if(iter == souvMap.end())
+    {
+        Souvenir temp(key);
+        souvMap.push_back(temp);
+        iter--;
+    }
+    else
+    {
+        qDebug() << "\nKey already in, use insertWhole to replace";
+    }
+
+}
+
+vector<Souvenir>::iterator Map::insertWhole(string key, Souvenir stadium)
 {
     // Creates an iterator and immediately calls find() to determine
     // whether or not a value with the same key already exists.

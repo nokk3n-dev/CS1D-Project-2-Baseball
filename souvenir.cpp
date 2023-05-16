@@ -1,6 +1,13 @@
 #include "souvenir.h"
 
 Souvenir::Souvenir(){
+
+};
+
+Souvenir::Souvenir(string stadName){
+
+    stadium = stadName;
+
     double arr[] = {19.99, 89.39, 17.99, 29.99, 199.99};
     string sarr[] = {"Basseball Cap, Baseball Bat, Team Pennant, Autographed Baseball, Team Jersey"};
     prices.insert(prices.end(), arr, arr+5);
@@ -22,6 +29,15 @@ void Souvenir::removeItem(int place){
     items.erase(items.begin()+place);
 
 }
+
+/*
+void Souvenir::removeItemIter(vector<Souvenir>::iterator iter){
+    int tempInt;
+    tempInt = distance(prices.begin(), iter);
+
+    prices.erase(iter);
+    items.erase(iter);
+}*/
 
 string Souvenir::getStadium(){
     return stadium;

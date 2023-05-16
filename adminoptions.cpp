@@ -1,12 +1,13 @@
 #include "adminoptions.h"
 #include "ui_adminoptions.h"
 
+
 AdminOptions::AdminOptions(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AdminOptions)
 {
     ui->setupUi(this);
-    ui->stadiumDisplayWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->Stack->setCurrentWidget(ui->AdminHome);
 
     // Get data from database
     QMessageBox msgBox;
@@ -33,6 +34,8 @@ AdminOptions::AdminOptions(QWidget *parent) :
                             // Create Team Object
                             Team t(teamName, stadiumName, seatCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType);
                             teamList.insert(t);
+
+                            mainSouv.insert(stadiumName);
                         }
 
         }
@@ -95,5 +98,111 @@ void AdminOptions::showStadiums(Ui::AdminOptions* ui)
 void AdminOptions::on_adminHomeButton_clicked()
 {
     this->close();
+}
+
+
+void AdminOptions::on_adminAddStad_clicked()
+{
+    std::string startStad;
+    std::string endStad;
+    double numDist;
+
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),"/Desktop", tr("Txt Files (*.txt)"));     /// user picks the txt file to choose from
+    QFile file(fileName);
+
+    std::ifstream inFile;
+    inFile.open(fileName.toStdString());
+
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QMessageBox::information(this,QObject::tr("System Message"),tr("File is invalid! Cannot be found."),QMessageBox::Ok);
+        return;
+    }
+    else
+    {
+         while(inFile) {
+            getline(inFile, startStad);
+            getline(inFile, endStad);
+            inFile >> numDist;
+            inFile.ignore(10000,'\n');
+
+            QString start_stad = QString::fromStdString(startStad);
+            QString end_stad = QString::fromStdString(endStad);
+
+            QSqlQuery query;
+            query.prepare("INSERT INTO Distance(Start_Stadium, End_Stadium, Distance)"
+                          " VALUES (:start_stad, :end_stad, :addDist)");
+            query.bindValue(":start_stad", start_stad);
+            query.bindValue(":end_stad", end_stad);
+            query.bindValue(":addDist", numDist);
+
+            if(query.exec())
+            {
+                qDebug() << "Query executed";
+            }
+            else
+            {
+                qDebug() << "Query UNABLE to execute!";
+                QMessageBox::information(this,QObject::tr("System Message"),tr("Failure to input the desired stadium, already included."),QMessageBox::Ok);
+                break;
+            }
+        }
+
+         QMessageBox::information(this,QObject::tr("System Message"),tr("Stadium Added"),QMessageBox::Ok);
+    }
+}
+
+
+void AdminOptions::on_adminAddSouv_clicked()
+{
+
+    ui->Stack->setCurrentWidget(ui->AddSouv);
+
+    //For the Combo Box
+    for (int iter; iter < mainSouv.souvMap.size(); iter++){
+
+        QString tempText = QString::fromStdString(mainSouv[iter].getStadium());
+        ui->addSouvStadiumComboBox->addItem(tempText);
+    }
+
+
+}
+
+
+void AdminOptions::on_adminChaStad_clicked()
+{
+    ui->Stack->setCurrentWidget(ui->ChangeSouvPrice);
+
+    //For the Combo Box
+    for (int iter; iter < mainSouv.souvMap.size(); iter++){
+
+        QString tempText = QString::fromStdString(mainSouv[iter].getStadium());
+        ui->changeSouvStadiumComboBox->addItem(tempText);
+    }
+}
+
+
+void AdminOptions::on_adminDelSouv_clicked()
+{
+    //For the Combo Box
+    for (int iter; iter < mainSouv.souvMap.size(); iter++){
+
+        QString tempText = QString::fromStdString(mainSouv[iter].getStadium());
+        ui->removeSouvStadiumComboBox->addItem(tempText);
+    }
+
+    ui->Stack->setCurrentWidget(ui->DeleteSouv);
+}
+
+
+void AdminOptions::on_AcceptDelete_clicked()
+{
+    QString stadName;
+    QString souvName;
+
+    stadName = ui->removeSouvStadiumComboBox->currentText();
+    souvName = ui->textDeleteSouvName->text();
+
+
 }
 

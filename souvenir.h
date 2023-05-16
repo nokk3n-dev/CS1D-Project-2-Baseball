@@ -8,6 +8,8 @@ class Souvenir
 {
 
 public:
+    Souvenir();
+
     /* Constructor, includes the following into items and prices
      *  ⦁	Baseball cap			$19.99
         ⦁	Baseball bat			$89.39
@@ -15,7 +17,8 @@ public:
         ⦁	Autographed baseball	$29.99
         ⦁	Team jersey             $199.99
      * */
-    Souvenir();
+
+    Souvenir(string stadName);
 
     //Inserts the item into the two arrays
     void insertItem(string item, double price);
@@ -25,6 +28,8 @@ public:
 
     //Removes item, place dictates location
     void removeItem(int place);
+
+    void removeItemIter(vector<Souvenir>::iterator iter);
 
     string getStadium();
     string getItem(int place);

@@ -16,16 +16,18 @@ public:
 
     vector<Souvenir>::iterator find(string key);
 
-    vector<Souvenir>::iterator insert(string key, Souvenir stadium);
+    void insert(string key);
+
+    vector<Souvenir>::iterator insertWhole(string key, Souvenir stadium);
 
 
     vector<Souvenir>::iterator begin();
 
     vector<Souvenir>::iterator end();
 
-private:
     vector<Souvenir> souvMap;
 
 };
+
 
 #endif // UNORDEREDMAP_H
