@@ -10,6 +10,16 @@ DfsBfsPage::DfsBfsPage(QWidget *parent) :
     ui(new Ui::DfsBfsPage)
 {
     ui->setupUi(this);
+
+    // Set up background
+    QPixmap bkgnd("C:\\Coding\\CS1D-Project-2-Baseball\\CS1D-Project-2-Baseball\\Resources\\dfsbfsPage.jpg");
+    bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, bkgnd);
+    this->setPalette(palette);
+
+    ui->backgroundLabel->setStyleSheet("QLabel { background-color : white; }");
+
 }
 
 DfsBfsPage::~DfsBfsPage()

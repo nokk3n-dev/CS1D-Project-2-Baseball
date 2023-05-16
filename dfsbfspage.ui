@@ -95,6 +95,33 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QLabel" name="backgroundLabel">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>190</y>
+     <width>461</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>40</pointsize>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <zorder>backgroundLabel</zorder>
+  <zorder>dfs_button</zorder>
+  <zorder>bfs_button</zorder>
+  <zorder>distanceLabel</zorder>
+  <zorder>miles_label</zorder>
  </widget>
  <resources/>
  <connections/>

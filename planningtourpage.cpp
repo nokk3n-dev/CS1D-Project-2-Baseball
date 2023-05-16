@@ -11,6 +11,16 @@ planningTourPage::planningTourPage(QWidget *parent) :
     ui(new Ui::planningTourPage)
 {
     ui->setupUi(this);
+
+    // Set up background
+    QPixmap bkgnd("C:\\Coding\\CS1D-Project-2-Baseball\\CS1D-Project-2-Baseball\\Resources\\dfsbfsPage.jpg");
+    bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, bkgnd);
+    this->setPalette(palette);
+
+    ui->SelectTripLabel->setStyleSheet("QLabel { background-color : white; }");
+    ui->label->setStyleSheet("QLabel { color : white; }");
 }
 
 planningTourPage::~planningTourPage()
