@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="kruskal">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>240</x>
      <y>620</y>
      <width>150</width>
      <height>50</height>
@@ -34,7 +34,7 @@
   <widget class="QPushButton" name="prims">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>420</x>
      <y>620</y>
      <width>150</width>
      <height>50</height>
@@ -106,7 +106,7 @@
   <widget class="QPushButton" name="dfs">
    <property name="geometry">
     <rect>
-     <x>490</x>
+     <x>600</x>
      <y>620</y>
      <width>150</width>
      <height>50</height>
@@ -118,25 +118,7 @@
     </font>
    </property>
    <property name="text">
-    <string>DFS Search</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="bfs">
-   <property name="geometry">
-    <rect>
-     <x>670</x>
-     <y>620</y>
-     <width>150</width>
-     <height>50</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>BFS Search</string>
+    <string>DFS/BFS Search</string>
    </property>
   </widget>
   <widget class="QLabel" name="SelectTripLabel">

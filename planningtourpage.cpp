@@ -4,6 +4,7 @@
 #include "prims.h"
 #include "kruskal.h"
 #include "stadiumtrippage.h"
+#include "dfsbfspage.h"
 #include "customtrippage.h"
 planningTourPage::planningTourPage(QWidget *parent) :
     QDialog(parent),
@@ -68,12 +69,16 @@ void planningTourPage::on_Trip_Button_clicked()
 
 void planningTourPage::on_dfs_clicked()
 {
-
+    DfsBfsPage DFSPage;
+    DFSPage.setModal(true);
+    DFSPage.exec();
 }
 
 
 void planningTourPage::on_bfs_clicked()
 {
-
+    DfsBfsPage BFSPage;
+    BFSPage.setModal(true);
+    BFSPage.exec();
 }
 

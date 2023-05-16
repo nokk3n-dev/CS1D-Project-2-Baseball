@@ -32,6 +32,8 @@ public:
 private slots:
     void on_sortBox_currentTextChanged(const QString &arg1);
 
+    void on_viewTeam_box_currentTextChanged(const QString &arg1);
+
 private:
     Ui::ViewingPage *ui;
 };
