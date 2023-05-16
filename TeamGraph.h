@@ -371,9 +371,6 @@ public:
     {
         visited[team] = true;
 
-        // ADD ROW TO TABLE SAYING THE FOLLOWING
-        // Visited Team
-
         bool loop = true;
         while (loop)
         {
@@ -390,28 +387,28 @@ public:
                     minDistance = i->distance;
                     closest = i->team;
                 }
+            }
 
-                if (minDistance != 1000000)
+            if (minDistance != 1000000)
+            {
+                loop = true;
+
+                bool found = false;
+                list<TeamDist>::iterator j = adj[team].begin();
+                while(!found && j != adj[team].end())
                 {
-                    loop = true;
-
-                    bool found = false;
-                    list<TeamDist>::iterator j = adj[team].begin();
-                    while(!found && j != adj[team].end())
+                    if (closest == j->team)
                     {
-                        if (closest == j->team)
-                        {
-                            j->discovery = true;
-                            found = true;
-                        } else
-                        {
-                            j++;
-                        }
+                        j->discovery = true;
+                        found = true;
+                    } else
+                    {
+                        j++;
                     }
-
-                    totalDistance = totalDistance + minDistance;
-                    DFS(closest, totalDistance);
                 }
+
+                totalDistance = totalDistance + minDistance;
+                DFS(closest, totalDistance);
             }
         }
     }

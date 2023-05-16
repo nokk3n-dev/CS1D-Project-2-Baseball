@@ -10,18 +10,6 @@ DfsBfsPage::DfsBfsPage(QWidget *parent) :
     ui(new Ui::DfsBfsPage)
 {
     ui->setupUi(this);
-
-    // Set the number of columns and rows
-    ui->teamView->setColumnCount(2);
-    ui->teamView->setRowCount(50);
-
-    // Fix column widths
-    ui->teamView->setColumnWidth(0, 280);
-    ui->teamView->setColumnWidth(1, 279);
-
-    // Set the names of the columns
-    QStringList labels = { "Starting Team", "Ending Team"};
-    ui->teamView->setHorizontalHeaderLabels(labels);
 }
 
 DfsBfsPage::~DfsBfsPage()
