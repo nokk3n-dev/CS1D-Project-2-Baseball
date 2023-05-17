@@ -101,7 +101,8 @@ void dijk::createMap()
                 graph[startVertex][i] = distances[i];
                 graph[i][startVertex] = distances[i];
             }
-        }
+        } // End Dijkstra's
+
     }
     else
     {
@@ -110,6 +111,7 @@ void dijk::createMap()
         dbHandler.close();
     }
 }
+
 int dijk::calcDistance(const string& teamOne, const string& teamTwo)
 {
     int indexOne = dijkCityIndices[teamOne];
