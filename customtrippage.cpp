@@ -144,8 +144,6 @@ void CustomTripPage::on_Add_All_Button_clicked()
     }
 }
 
-
-
 void CustomTripPage::on_Sort_Button_clicked()
 {
     dijk shortestPath;
@@ -199,5 +197,3 @@ void CustomTripPage::on_Sort_Button_clicked()
         }
     }
 }
-
-

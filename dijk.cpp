@@ -111,6 +111,7 @@ void dijk::createMap()
         dbHandler.close();
     }
 }
+
 vector<string> dijk::getStadiumsInOrder(const string& startingLocationStadiumName, const vector<string>& stadiumsToSort)
 {
     vector<string> stadiumsInOrder;
@@ -150,7 +151,6 @@ vector<string> dijk::getStadiumsInOrder(const string& startingLocationStadiumNam
 
     return stadiumsInOrder;
 }
-
 
 
 int dijk::calcDistance(const string& teamOne, const string& teamTwo)

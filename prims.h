@@ -33,6 +33,7 @@ public:
     void createMap();
     void primsAlgo();
     void showData(Ui::prims* ui);
+    void primsAlgo(int graph[50][50]);
 
 
 private:
