@@ -29,6 +29,7 @@ public:
     void createMap();
     int calcDistance(const string& teamOne, const string& teamTwo);
     int distCalc(const vector<string>& teams);
+    vector<string> getStadiumsInOrder(const string& startingLocationStadiumName, const vector<string>& stadiumsToSort);
 private slots:
 
 private:
