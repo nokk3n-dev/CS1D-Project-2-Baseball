@@ -20,8 +20,10 @@ MainWindow::MainWindow(QWidget *parent)
     movie->start();
     ui->testLabel->show();
 
-    /*
+
     QMessageBox msgBox;
+
+    extern Map mainSouv;
 
     DbHandler dbHandler(DATABASE_PATH,DATABASE_CONNECTION_NAME);
         if(dbHandler.open())
@@ -32,6 +34,9 @@ MainWindow::MainWindow(QWidget *parent)
                         {
                             string teamName = query1.value(0).toString().toStdString();
                             string stadiumName = query1.value(1).toString().toStdString();
+
+                            mainSouv.insert(stadiumName);
+                            qDebug() << QString::fromStdString(stadiumName);
                         }
 
         }
@@ -40,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent)
             msgBox.setText(FAILED_MESSAGE_DATABASE_OPENING);
             msgBox.exec();
             dbHandler.close();
-        }*/
+        }
 }
 
 MainWindow::~MainWindow()

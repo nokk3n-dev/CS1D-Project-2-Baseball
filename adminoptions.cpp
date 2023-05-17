@@ -10,6 +10,8 @@ AdminOptions::AdminOptions(QWidget *parent) :
     ui->Stack->setCurrentWidget(ui->AdminHome);
 
     // Get data from database
+    extern Map mainSouv;
+
     QMessageBox msgBox;
 
     DbHandler dbHandler(DATABASE_PATH,DATABASE_CONNECTION_NAME);
@@ -30,6 +32,8 @@ AdminOptions::AdminOptions(QWidget *parent) :
                             int distanceToCenter = query1.value(7).toInt();
                             string ballparkTypology = query1.value(8).toString().toStdString();
                             string roofType = query1.value(9).toString().toStdString();
+
+
 
                             // Create Team Object
                             Team t(teamName, stadiumName, seatCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType);
@@ -155,43 +159,48 @@ void AdminOptions::on_adminAddStad_clicked()
 
 void AdminOptions::on_adminAddSouv_clicked()
 {
-
+    extern Map mainSouv;
     ui->Stack->setCurrentWidget(ui->AddSouv);
 
     //For the Combo Box
-    for (int iter; iter < mainSouv.souvMap.size(); iter++){
+    for (int iter = 0; iter < mainSouv.souvMap.size(); iter++){
 
         QString tempText = QString::fromStdString(mainSouv[iter].getStadium());
         ui->addSouvStadiumComboBox->addItem(tempText);
     }
 
-
 }
 
 
-void AdminOptions::on_adminChaStad_clicked()
+void AdminOptions::on_adminChaSouv_clicked()
 {
+    extern Map mainSouv;
+
     ui->Stack->setCurrentWidget(ui->ChangeSouvPrice);
 
     //For the Combo Box
-    for (int iter; iter < mainSouv.souvMap.size(); iter++){
+    for (int iter = 0; iter < mainSouv.souvMap.size(); iter++){
 
         QString tempText = QString::fromStdString(mainSouv[iter].getStadium());
         ui->changeSouvStadiumComboBox->addItem(tempText);
     }
+
 }
 
 
 void AdminOptions::on_adminDelSouv_clicked()
 {
+
+    extern Map mainSouv;
     //For the Combo Box
-    for (int iter; iter < mainSouv.souvMap.size(); iter++){
+    for (int iter = 0; iter < mainSouv.souvMap.size(); iter++){
 
         QString tempText = QString::fromStdString(mainSouv[iter].getStadium());
         ui->removeSouvStadiumComboBox->addItem(tempText);
     }
 
     ui->Stack->setCurrentWidget(ui->DeleteSouv);
+
 }
 
 
@@ -199,10 +208,84 @@ void AdminOptions::on_AcceptDelete_clicked()
 {
     QString stadName;
     QString souvName;
+    int cycle;
 
     stadName = ui->removeSouvStadiumComboBox->currentText();
     souvName = ui->textDeleteSouvName->text();
 
+    QVector<Souvenir>::iterator iter = mainSouv.find(stadName.QString::toStdString());
 
+    for(cycle = 0; cycle < iter->getSize(); cycle++){
+        if(souvName.QString::toStdString() == iter->getItem(cycle)){
+            iter->removeItem(cycle);
+            QMessageBox::information(this,QObject::tr("System Message"),tr("Item Removed"),QMessageBox::Ok);
+            break;
+        }
+    }
+
+    if(cycle == iter->getSize()){
+        QMessageBox::information(this,QObject::tr("System Message"),tr("Failed to Find Item"),QMessageBox::Ok);
+    }
+
+}
+
+
+void AdminOptions::on_AcceptAddSouv_clicked()
+{
+    QString stadName;
+    QString souvName;
+    QString souvPrice;
+
+    stadName = ui->addSouvStadiumComboBox->currentText();
+    souvName = ui->textNewSouvName->text();
+    souvPrice = ui->textNewSouvPrice->text();
+
+    QVector<Souvenir>::iterator iter = mainSouv.find(stadName.QString::toStdString());
+
+    iter->insertItem(souvName.QString::toStdString(), souvPrice.toDouble());
+
+    QMessageBox::information(this,QObject::tr("System Message"),tr("Item Added"),QMessageBox::Ok);
+
+
+}
+
+
+void AdminOptions::on_AcceptChangePrice_clicked()
+{
+    QString stadName;
+    QString souvName;
+    QString souvPrice;
+
+    int cycle;
+
+    stadName = ui->changeSouvStadiumComboBox->currentText();
+    souvName = ui->textChangeName->text();
+    souvPrice = ui->textChangePrice->text();
+
+    QVector<Souvenir>::iterator iter = mainSouv.find(stadName.QString::toStdString());
+
+    for(cycle = 0; cycle < iter->getSize(); cycle++){
+        if(souvName.QString::toStdString() == iter->getItem(cycle)){
+            iter->changePrice(souvPrice.toDouble(), cycle);
+            QMessageBox::information(this,QObject::tr("System Message"),tr("Price Changed"),QMessageBox::Ok);
+            break;
+        }
+    }
+
+    QMessageBox::information(this,QObject::tr("System Message"),tr("Failed to find item"),QMessageBox::Ok);
+}
+
+
+void AdminOptions::on_adminChaStad_clicked()
+{
+    extern Map mainSouv;
+    ui->Stack->setCurrentWidget(ui->ChangeStad);
+
+    //For the Combo Box
+    for (int iter = 0; iter < mainSouv.souvMap.size(); iter++){
+
+        QString tempText = QString::fromStdString(mainSouv[iter].getStadium());
+        ui->changeSouvStadiumComboBox->addItem(tempText);
+    }
 }
 

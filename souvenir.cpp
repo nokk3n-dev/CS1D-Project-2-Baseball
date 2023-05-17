@@ -5,14 +5,20 @@ Souvenir::Souvenir(){
 };
 
 Souvenir::Souvenir(string stadName){
-
     stadium = stadName;
 
     double arr[] = {19.99, 89.39, 17.99, 29.99, 199.99};
-    string sarr[] = {"Basseball Cap, Baseball Bat, Team Pennant, Autographed Baseball, Team Jersey"};
-    prices.insert(prices.end(), arr, arr+5);
-    items.insert(items.end(), sarr, sarr+5);
+    string sarr[] = {"Baseball Cap", "Baseball Bat", "Team Pennant", "Autographed Baseball", "Team Jersey"};
 
+    for(int i = 0; i < sizeof(arr); i++){
+        prices.push_back(arr[i]);
+    }
+
+    items.push_back("Baseball Cap");
+    items.push_back("Baseball Bat");
+    items.push_back("Team Pennant");
+    items.push_back("Autographed Baseball");
+    items.push_back("Team Jersey");
 };
 
 void Souvenir::insertItem(string item, double price){
@@ -31,12 +37,12 @@ void Souvenir::removeItem(int place){
 }
 
 /*
-void Souvenir::removeItemIter(vector<Souvenir>::iterator iter){
+void Souvenir::removeItemIter(QVector<Souvenir>::iterator iter){
     int tempInt;
-    tempInt = distance(prices.begin(), iter);
+    tempInt = difference(prices.begin(), iter);
 
-    prices.erase(iter);
-    items.erase(iter);
+    prices.remove(tempInt);
+    items.remove(tempInt);
 }*/
 
 string Souvenir::getStadium(){
@@ -49,4 +55,8 @@ string Souvenir::getItem(int place){
 
 double Souvenir::getPrice(int place){
     return prices[place];
+}
+
+int Souvenir::getSize(){
+    return prices.size();
 }

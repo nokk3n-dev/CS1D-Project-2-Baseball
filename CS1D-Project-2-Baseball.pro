@@ -13,6 +13,7 @@ SOURCES += \
     adminlogin.cpp \
     adminoptions.cpp \
     dbhandler.cpp \
+    global.cpp \
     kruskal.cpp \
     main.cpp \
     mainwindow.cpp \

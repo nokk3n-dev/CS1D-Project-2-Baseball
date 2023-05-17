@@ -8,26 +8,29 @@ class Map
 public:
     Map();
 
+    Map(string stadium);
+
     Souvenir operator[](int index);
+
+    Souvenir operator[](QVector<Souvenir>::iterator iter);
 
     int size();
 
     bool empty();
 
-    vector<Souvenir>::iterator find(string key);
+    QVector<Souvenir>::iterator find(string key);
 
     void insert(string key);
 
-    vector<Souvenir>::iterator insertWhole(string key, Souvenir stadium);
+    QVector<Souvenir>::iterator insertWhole(string key, Souvenir stadium);
 
 
-    vector<Souvenir>::iterator begin();
+    QVector<Souvenir>::iterator begin();
 
-    vector<Souvenir>::iterator end();
+    QVector<Souvenir>::iterator end();
 
-    vector<Souvenir> souvMap;
+    QVector<Souvenir> souvMap;
 
 };
-
 
 #endif // UNORDEREDMAP_H

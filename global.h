@@ -1,6 +1,10 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
+#include "dbhandler.h"
 #include "unorderedmap.h"
 
-Map mainSouv;
+
+extern Map mainSouv;
+
+
 #endif // GLOBAL_H

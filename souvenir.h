@@ -2,7 +2,7 @@
 #define SOUVENIR_H
 
 #include "dbhandler.h"
-#include <vector>
+#include <QVector>
 
 class Souvenir
 {
@@ -29,18 +29,20 @@ public:
     //Removes item, place dictates location
     void removeItem(int place);
 
-    void removeItemIter(vector<Souvenir>::iterator iter);
+    void removeItemIter(QVector<Souvenir>::iterator iter);
 
     string getStadium();
     string getItem(int place);
     double getPrice(int place);
 
+    int    getSize();
+
 private:
     //Acts as key for unordermap
     string stadium;
     //Vector of items, the place of the item's info should match between the two vectors
-    vector<string> items;
-    vector<double> prices;
+    QVector<string> items;
+    QVector<double> prices;
 };
 
 

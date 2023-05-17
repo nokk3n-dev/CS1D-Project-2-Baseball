@@ -37,6 +37,12 @@ private slots:
 
     void on_AcceptDelete_clicked();
 
+    void on_AcceptAddSouv_clicked();
+
+    void on_AcceptChangePrice_clicked();
+
+    void on_adminChaSouv_clicked();
+
 private:
     Ui::AdminOptions *ui;
     TeamList<Team> teamList;
