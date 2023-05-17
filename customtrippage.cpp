@@ -112,3 +112,4 @@ void CustomTripPage::on_Trip_Button_clicked()
 //    TripPage.SendTrip(TripList);
 }
 
+
