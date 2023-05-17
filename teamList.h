@@ -114,6 +114,10 @@ public:
     {
         return head;
     }
+    void setHead(TeamNode<T>* newHead)
+        {
+            head = newHead;
+        }
 
 private:
     TeamNode<T>* head;

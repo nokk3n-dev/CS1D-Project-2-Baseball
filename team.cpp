@@ -26,7 +26,7 @@ int Team::getDate() { return date_opened; }
 int Team::getDTC() { return distance_to_center; }
 string Team::getTypology() { return ballpark_typology; }
 string Team::getRoof() { return roof_type; }
-
+void Team::setStadium(string stadium) { stadium_name = stadium; }
 // Overloaded operator
 Team* Team::operator=(const Team& t)
 {

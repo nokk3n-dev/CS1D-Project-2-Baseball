@@ -29,7 +29,7 @@ public:
     int getDTC();
     string getTypology();
     string getRoof();
-
+    void setStadium(string stadium);
     Team* operator=(const Team &t);
 
 protected:

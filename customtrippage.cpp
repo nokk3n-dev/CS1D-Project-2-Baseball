@@ -1,6 +1,7 @@
 #include "customtrippage.h"
 #include "stadiumtrippage.h"
 #include "ui_customtrippage.h"
+#include "dijk.h"
 #include "dbhandler.h"
 #include <QWidget>
 CustomTripPage::CustomTripPage(QWidget *parent) :
@@ -114,6 +115,14 @@ void CustomTripPage::on_Trip_Button_clicked()
 void CustomTripPage::on_Add_All_Button_clicked()
 {
     QString startingLoc = ui->StartingLoc_Dropdown->currentText();
+    ui->listWidget->clear();
+    TeamNode<Team>* delNode = TripList.getHead();
+    while (delNode != nullptr) {
+        TeamNode<Team>* nextNode = delNode->next;
+        delete delNode;
+        delNode = nextNode;
+    }
+    TripList.setHead(nullptr);
 
     for (int i = 0; i < ui->Stadium_Dropdown->count(); i++) {
         QString teamToAdd = ui->Stadium_Dropdown->itemText(i);
@@ -139,6 +148,70 @@ void CustomTripPage::on_Add_All_Button_clicked()
 
 void CustomTripPage::on_Sort_Button_clicked()
 {
+    dijk shortestPath;
+    vector<string> sp;
+    ::TeamList<Team> currentTrip;
 
+    // Initializing current trip vector to store names of stadiums actually in the trip
+    TeamNode<Team>* currentNode = TeamList.getHead();
+    vector<string> currentStadiums;
+    while (currentNode != nullptr) {
+        currentTrip.insert(currentNode->data);
+        currentStadiums.push_back(currentNode->data.getStadium());
+        currentNode = currentNode->next;
+    }
+
+    currentNode = currentTrip.getHead();
+    while (currentNode != nullptr) {
+        if (currentNode->data.getName() == ui->StartingLoc_Dropdown->currentText().toStdString()) {
+            sp = shortestPath.getStadiumsInOrder(currentNode->data.getStadium(), currentStadiums);
+        }
+        currentNode = currentNode->next;
+    }
+
+    // Clear the TeamList linked list object
+    currentNode = TeamList.getHead();
+    while (currentNode != nullptr) {
+        TeamNode<Team>* nextNode = currentNode->next;
+        delete currentNode;
+        currentNode = nextNode;
+    }
+    TeamList.setHead(nullptr);
+
+    currentNode = TripList.getHead();
+    while (currentNode != nullptr) {
+        TeamNode<Team>* nextNode = currentNode->next;
+        delete currentNode;
+        currentNode = nextNode;
+    }
+    TripList.setHead(nullptr);
+
+    // Insert the stadiums in the order designated by the shortest path algorithm into the teamlist
+    for (unsigned long long i = 0; i < sp.size(); i++) {
+        string stadium = sp.at(i); // Stadium to add
+        currentNode = currentTrip.getHead();
+        while (currentNode != nullptr) {
+            // Go through vector<string> sp and insert stadiums into TeamList based on the order of stadiums in sp.
+            if (currentNode->data.getStadium() == stadium && stadium != ui->StartingLoc_Dropdown->currentText().toStdString()) {
+                TeamList.insert(currentNode->data);
+                TripList.insert(currentNode->data);
+            }
+            currentNode = currentNode->next;
+        }
+    }
+
+    // Clear the list widget of all its contents
+    ui->listWidget->clear();
+
+    // Add the items from the sp vector to the list widget
+    for (unsigned long long i = 0; i < sp.size(); i++) {
+        if (sp.at(i) != ui->StartingLoc_Dropdown->currentText().toStdString()) {
+            ui->listWidget->addItem(QString::fromStdString(sp.at(i)));
+        }
+    }
 }
+
+
+
+
 
