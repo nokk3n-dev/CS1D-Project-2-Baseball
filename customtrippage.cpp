@@ -153,7 +153,7 @@ void CustomTripPage::on_Sort_Button_clicked()
     ::TeamList<Team> currentTrip;
 
     // Initializing current trip vector to store names of stadiums actually in the trip
-    TeamNode<Team>* currentNode = TeamList.getHead();
+    TeamNode<Team>* currentNode = TripList.getHead();
     vector<string> currentStadiums;
     while (currentNode != nullptr) {
         currentTrip.insert(currentNode->data);
@@ -161,23 +161,13 @@ void CustomTripPage::on_Sort_Button_clicked()
         currentNode = currentNode->next;
     }
 
-    currentNode = currentTrip.getHead();
+    currentNode = TeamList.getHead();
     while (currentNode != nullptr) {
         if (currentNode->data.getName() == ui->StartingLoc_Dropdown->currentText().toStdString()) {
             sp = shortestPath.getStadiumsInOrder(currentNode->data.getStadium(), currentStadiums);
         }
         currentNode = currentNode->next;
     }
-
-    // Clear the TeamList linked list object
-    currentNode = TeamList.getHead();
-    while (currentNode != nullptr) {
-        TeamNode<Team>* nextNode = currentNode->next;
-        delete currentNode;
-        currentNode = nextNode;
-    }
-    TeamList.setHead(nullptr);
-
     currentNode = TripList.getHead();
     while (currentNode != nullptr) {
         TeamNode<Team>* nextNode = currentNode->next;
@@ -193,7 +183,6 @@ void CustomTripPage::on_Sort_Button_clicked()
         while (currentNode != nullptr) {
             // Go through vector<string> sp and insert stadiums into TeamList based on the order of stadiums in sp.
             if (currentNode->data.getStadium() == stadium && stadium != ui->StartingLoc_Dropdown->currentText().toStdString()) {
-                TeamList.insert(currentNode->data);
                 TripList.insert(currentNode->data);
             }
             currentNode = currentNode->next;
@@ -210,8 +199,5 @@ void CustomTripPage::on_Sort_Button_clicked()
         }
     }
 }
-
-
-
 
 
