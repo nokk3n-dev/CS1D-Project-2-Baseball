@@ -24,6 +24,8 @@ private slots:
 private:
     Ui::StadiumTripPage *ui;
     TeamList<Team> TeamList;
+    string lastLocName;
+    int totalDistance;
 };
 
 #endif // STADIUMTRIPPAGE_H

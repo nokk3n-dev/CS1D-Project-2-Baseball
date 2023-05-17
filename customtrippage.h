@@ -23,6 +23,10 @@ private slots:
 
     void on_Trip_Button_clicked();
 
+    void on_Add_All_Button_clicked();
+
+    void on_Sort_Button_clicked();
+
 private:
     Ui::CustomTripPage *ui;
     TeamList<Team> TripList;

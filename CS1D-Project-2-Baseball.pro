@@ -14,6 +14,7 @@ SOURCES += \
     adminoptions.cpp \
     customtrippage.cpp \
     dbhandler.cpp \
+    dijk.cpp \
     dfsbfspage.cpp \
     kruskal.cpp \
     main.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     customtrippage.h \
     dbConstance.h \
     dbhandler.h \
+    dijk.h \
     dfsbfspage.h \
     kruskal.h \
     mainwindow.h \
@@ -47,6 +49,7 @@ FORMS += \
     customtrippage.ui \
     dfsbfspage.ui \
     dialog.ui \
+    dijk.ui \
     kruskal.ui \
     mainwindow.ui \
     planningtourpage.ui \

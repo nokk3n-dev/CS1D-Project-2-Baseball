@@ -51,29 +51,9 @@ void planningTourPage::on_shortest_path_clicked()
 
 void planningTourPage::on_Trip_Button_clicked()
 {
-    if(this->ui->Trip_Selection->currentText()==QString::fromStdString("Dodger Stadium Dijkstra Trip")){
-        //Option 1: Start at Dodger Stadium & visit any other stadium of the user's choice. Use Dijkstra or A* algorithm to determine shortest path
-//        StadiumTripPage tripPage;
-//        tripPage.setModal(true);
-//        tripPage.exec();
-//        tripPage.setTrip(this->ui->Trip_Selection->currentText());
-    } else if (this->ui->Trip_Selection->currentText()=="Custom Trip"){
-        //Option 2: Plan a custom trip with a designated order of visiting each stadium
-        CustomTripPage tripPage;
-        tripPage.setModal(true);
-        tripPage.exec();
-    }else if (this->ui->Trip_Selection->currentText()==QString::fromStdString("Miami Marlins Circuit Trip")){
-//        StadiumTripPage tripPage;
-//        tripPage.setModal(true);
-//        tripPage.exec();
-//        tripPage.setTrip(this->ui->Trip_Selection->currentText());
-        //Option 3: Start at the Miami Marlins stadium and visit all other stadiums while traveling the shortest distance
-    }else if (this->ui->Trip_Selection->currentText()=="Efficient Trip"){
-        //Option 4: Recursively iterate through each stadium chosen by the user, starting at the user's starting location
-        CustomTripPage tripPage;
-        tripPage.setModal(true);
-        tripPage.exec();
-    }
+    CustomTripPage tripPage;
+    tripPage.setModal(true);
+    tripPage.exec();
 }
 
 
