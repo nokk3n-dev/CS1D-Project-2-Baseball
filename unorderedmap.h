@@ -2,6 +2,7 @@
 #define UNORDEREDMAP_H
 
 #include "souvenir.h"
+#include <QDebug>
 
 class Map
 {

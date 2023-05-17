@@ -10,7 +10,7 @@ Souvenir::Souvenir(string stadName){
     double arr[] = {19.99, 89.39, 17.99, 29.99, 199.99};
     string sarr[] = {"Baseball Cap", "Baseball Bat", "Team Pennant", "Autographed Baseball", "Team Jersey"};
 
-    for(int i = 0; i < sizeof(arr); i++){
+    for(int i = 0; i < 5; i++){
         prices.push_back(arr[i]);
     }
 
@@ -58,5 +58,5 @@ double Souvenir::getPrice(int place){
 }
 
 int Souvenir::getSize(){
-    return prices.size();
+    return items.size();
 }

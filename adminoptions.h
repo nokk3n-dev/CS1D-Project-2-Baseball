@@ -24,7 +24,10 @@ public:
     ~AdminOptions();
     void showStadiums(Ui::AdminOptions* ui);
 
+    bool checkNum(string num);
+
 private slots:
+
     void on_adminHomeButton_clicked();
 
     void on_adminAddStad_clicked();
@@ -42,6 +45,8 @@ private slots:
     void on_AcceptChangePrice_clicked();
 
     void on_adminChaSouv_clicked();
+
+    void on_Confirm_Button_clicked();
 
 private:
     Ui::AdminOptions *ui;

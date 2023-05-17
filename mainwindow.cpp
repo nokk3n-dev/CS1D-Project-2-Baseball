@@ -1,10 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "adminlogin.h"
 #include "planningtourpage.h"
 #include "viewingpage.h"
-#include "adminlogin.h"
-
-
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -19,33 +17,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->testLabel->setMovie(movie);
     movie->start();
     ui->testLabel->show();
-
-
-    QMessageBox msgBox;
-
-    extern Map mainSouv;
-
-    DbHandler dbHandler(DATABASE_PATH,DATABASE_CONNECTION_NAME);
-        if(dbHandler.open())
-        {
-            QSqlQuery query1("SELECT Team_Name, Stadium_Name");
-
-                        while(query1.next())
-                        {
-                            string teamName = query1.value(0).toString().toStdString();
-                            string stadiumName = query1.value(1).toString().toStdString();
-
-                            mainSouv.insert(stadiumName);
-                            qDebug() << QString::fromStdString(stadiumName);
-                        }
-
-        }
-        else
-        {
-            msgBox.setText(FAILED_MESSAGE_DATABASE_OPENING);
-            msgBox.exec();
-            dbHandler.close();
-        }
 }
 
 MainWindow::~MainWindow()
