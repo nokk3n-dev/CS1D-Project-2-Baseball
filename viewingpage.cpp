@@ -11,7 +11,7 @@ ViewingPage::ViewingPage(QWidget *parent) :
     ui->teamView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     // Set up background
-    QPixmap bkgnd("C:\\Users\\omeso\\Downloads\\CS1D-Project-2-Baseball-master\\CS1D-Project-2-Baseball-master\\Resources\\viewingPage.jpg");
+    QPixmap bkgnd("C:\\Coding\\CS1D-Project-2-Baseball\\CS1D-Project-2-Baseball\\Resources\\viewingPage.jpg");
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Window, bkgnd);
@@ -54,6 +54,7 @@ ViewingPage::ViewingPage(QWidget *parent) :
                                 // Create Team Object
                                 Team t(teamName, stadiumName, seatCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType);
                                 initialList.insert(t);
+                                ui->viewTeam_box->addItem(QString::fromStdString(teamName));
                             }
                         }
 
@@ -77,61 +78,41 @@ void ViewingPage::on_sortBox_currentTextChanged(const QString &sortOption)
 {
     if (sortOption == "Team Name")
     {
-        // Ensure the table is clear
-        ui->teamView->clear();
 
         sortByTeam();
     } else if (sortOption == "Stadium Name")
-    {    // Ensure the table is clear
-        ui->teamView->clear();
-
+    {
         sortByStadiumName();
     } else if (sortOption == "American League")
     {
-        // Ensure the table is clear
-        ui->teamView->clear();
 
         sortByLeague("American");
     } else if (sortOption == "National League")
     {
-        // Ensure the table is clear
-        ui->teamView->clear();
 
         sortByLeague("National");
     } else if (sortOption == "Typology")
     {
-        // Ensure the table is clear
-        ui->teamView->clear();
 
         sortByTypology();
     } else if (sortOption == "Date Opened")
     {
-        // Ensure the table is clear
-        ui->teamView->clear();
 
         sortByDate();
     } else if (sortOption == "Seating Capacity")
     {
-        // Ensure the table is clear
-        ui->teamView->clear();
 
         sortBySeat();
     } else if (sortOption == "Greatest Distance to Centre Field")
     {
-        // Ensure the table is clear
-        ui->teamView->clear();
 
         showGreatestDTC();
     } else if (sortOption == "Smallest Distance to Centre Field")
     {
-        // Ensure the table is clear
-        ui->teamView->clear();
 
         showSmallestDTC();
     } else if (sortOption == "Open Roof")
-    {
-        // Ensure the table is clear
-        ui->teamView->clear();
+    {    
 
         showOpenRoof();
     }
@@ -555,6 +536,10 @@ void ViewingPage::showSmallestDTC()
 
 void ViewingPage::showStadiums(Ui::ViewingPage* ui, TeamList<Team> list)
 {
+
+    // Ensure the table is clear
+    ui->teamView->clear();
+
     // Row and Column variables
     int row = 0;
     int column = 0;
@@ -604,5 +589,55 @@ void ViewingPage::showStadiums(Ui::ViewingPage* ui, TeamList<Team> list)
     }
 
     delete currentNode;
+}
+
+
+void ViewingPage::on_viewTeam_box_currentTextChanged(const QString &arg1)
+{
+    // Get data from database
+    QMessageBox msgBox;
+
+    TeamList<Team> team;
+
+    // count variable
+    int count = 0;
+
+    DbHandler dbHandler(DATABASE_PATH,DATABASE_CONNECTION_NAME);
+        if(dbHandler.open())
+        {
+            QSqlQuery query1("SELECT Team_Name, Stadium_Name, Seat_Capacity, Location, Playing_Surface, League,"
+                             "Date_Opened, Distance_to_Center_Field, Ballpark_Typology, Roof_Type FROM MLB_Information ORDER BY DISTANCE_TO_CENTER_FIELD");
+
+                        while(query1.next())
+                        {
+                            string teamName = query1.value(0).toString().toStdString();
+                            string stadiumName = query1.value(1).toString().toStdString();
+                            int seatCapacity = query1.value(2).toInt();
+                            string location = query1.value(3).toString().toStdString();
+                            string playingSurface = query1.value(4).toString().toStdString();
+                            string league = query1.value(5).toString().toStdString();
+                            int dateOpened = query1.value(6).toInt();
+                            int distanceToCenter = query1.value(7).toInt();
+                            string ballparkTypology = query1.value(8).toString().toStdString();
+                            string roofType = query1.value(9).toString().toStdString();
+
+                            if (teamName == arg1.toStdString())
+                            {
+                                // Create Team Object
+                                Team t(teamName, stadiumName, seatCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType);
+                                team.insert(t);
+                                count++;
+                            }
+                        }
+
+        }
+        else
+        {
+            msgBox.setText(FAILED_MESSAGE_DATABASE_OPENING);
+            msgBox.exec();
+            dbHandler.close();
+        }
+
+    showStadiums(ui, team);
 }
 
