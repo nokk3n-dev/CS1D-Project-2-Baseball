@@ -17,6 +17,11 @@ ViewingPage::ViewingPage(QWidget *parent) :
     palette.setBrush(QPalette::Window, bkgnd);
     this->setPalette(palette);
 
+    // Hide seating capacity
+    ui->seatingCapcity_label->hide();
+    ui->seatNum_label->hide();
+    seatingCapcity = 0;
+
     // Set up text color
 //    ui->baseballTeamsLabel->setText("<font color='white'>Baseball Teams</font>");
 //    ui->sortByLabel->setText("<font color='white'>Sort By</font>");
@@ -78,26 +83,39 @@ void ViewingPage::on_sortBox_currentTextChanged(const QString &sortOption)
 {
     if (sortOption == "Team Name")
     {
-
+        // Hide seating capacity
+        ui->seatingCapcity_label->hide();
+        ui->seatNum_label->hide();
         sortByTeam();
     } else if (sortOption == "Stadium Name")
     {
+        // Hide seating capacity
+        ui->seatingCapcity_label->hide();
+        ui->seatNum_label->hide();
         sortByStadiumName();
     } else if (sortOption == "American League")
     {
-
+        // Hide seating capacity
+        ui->seatingCapcity_label->hide();
+        ui->seatNum_label->hide();
         sortByLeague("American");
     } else if (sortOption == "National League")
     {
-
+        // Hide seating capacity
+        ui->seatingCapcity_label->hide();
+        ui->seatNum_label->hide();
         sortByLeague("National");
     } else if (sortOption == "Typology")
     {
-
+        // Hide seating capacity
+        ui->seatingCapcity_label->hide();
+        ui->seatNum_label->hide();
         sortByTypology();
     } else if (sortOption == "Date Opened")
     {
-
+        // Hide seating capacity
+        ui->seatingCapcity_label->hide();
+        ui->seatNum_label->hide();
         sortByDate();
     } else if (sortOption == "Seating Capacity")
     {
@@ -105,15 +123,21 @@ void ViewingPage::on_sortBox_currentTextChanged(const QString &sortOption)
         sortBySeat();
     } else if (sortOption == "Greatest Distance to Centre Field")
     {
-
+        // Hide seating capacity
+        ui->seatingCapcity_label->hide();
+        ui->seatNum_label->hide();
         showGreatestDTC();
     } else if (sortOption == "Smallest Distance to Centre Field")
     {
-
+        // Hide seating capacity
+        ui->seatingCapcity_label->hide();
+        ui->seatNum_label->hide();
         showSmallestDTC();
     } else if (sortOption == "Open Roof")
     {    
-
+        // Hide seating capacity
+        ui->seatingCapcity_label->hide();
+        ui->seatNum_label->hide();
         showOpenRoof();
     }
 }
@@ -240,6 +264,7 @@ void ViewingPage::sortBySeat()
                                 // Create Team Object
                                 Team t(teamName, stadiumName, seatCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType);
                                 sortedSeat.insert(t);
+                                seatingCapcity += seatCapacity;
                             }
                         }
 
@@ -252,6 +277,13 @@ void ViewingPage::sortBySeat()
         }
 
     showStadiums(ui, sortedSeat);
+
+    // Set seatNum label
+    ui->seatNum_label->setText(QString::number(seatingCapcity));
+
+    // Show seating capacity
+    ui->seatingCapcity_label->show();
+    ui->seatNum_label->show();
 }
 
 void ViewingPage::sortByLeague(string whatLeague)
@@ -303,7 +335,7 @@ void ViewingPage::sortByLeague(string whatLeague)
 
 void ViewingPage::sortByTypology()
 {
-    // Get data from database
+        // Get data from database
         QMessageBox msgBox;
 
         TeamList<Team> sortedTypology;
@@ -594,6 +626,10 @@ void ViewingPage::showStadiums(Ui::ViewingPage* ui, TeamList<Team> list)
 
 void ViewingPage::on_viewTeam_box_currentTextChanged(const QString &arg1)
 {
+    // Hide seating capacity
+    ui->seatingCapcity_label->hide();
+    ui->seatNum_label->hide();
+
     // Get data from database
     QMessageBox msgBox;
 

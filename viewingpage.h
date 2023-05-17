@@ -36,6 +36,7 @@ private slots:
 
 private:
     Ui::ViewingPage *ui;
+    int seatingCapcity;
 };
 
 #endif // VIEWINGPAGE_H

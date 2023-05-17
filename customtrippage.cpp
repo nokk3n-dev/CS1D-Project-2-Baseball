@@ -1,6 +1,7 @@
 #include "customtrippage.h"
 #include "stadiumtrippage.h"
 #include "ui_customtrippage.h"
+#include "dijk.h"
 #include "dbhandler.h"
 #include <QWidget>
 CustomTripPage::CustomTripPage(QWidget *parent) :
@@ -133,12 +134,5 @@ void CustomTripPage::on_Add_All_Button_clicked()
             }
         }
     }
-}
-
-
-
-void CustomTripPage::on_Sort_Button_clicked()
-{
-
 }
 
