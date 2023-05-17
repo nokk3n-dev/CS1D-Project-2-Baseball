@@ -60,50 +60,65 @@ void kruskal::createMap()
     DbHandler dbHandler(DATABASE_PATH,DATABASE_CONNECTION_NAME);
     if(dbHandler.open())
     {
-        QSqlQuery query("SELECT Stadium_Name FROM MLB_Information");
+
         QSqlQuery query1("SELECT Start_Stadium, End_Stadium, distance FROM Distance");
 
-        while(query.next())
         {
-            team = query.value(0).toString();
-            teamS = team.toStdString();
-            if (cityIndices.find(teamS) == cityIndices.end())
             {
-                cityIndices[teamS] = currentIndex;
-                indexToCity[currentIndex] = teamS;
-                currentIndex++;
+                QMessageBox msgBox;
+                QString team;
+                string teamS;
+                QString firstTeam;
+                QString secondTeam;
+                string firstTeamS;
+                string secondTeamS;
+                int distance = 0;;
 
+                DbHandler dbHandler(DATABASE_PATH,DATABASE_CONNECTION_NAME);
+                if(dbHandler.open())
+                {
+                    QSqlQuery query("SELECT Start_Stadium, End_Stadium, distance FROM Distance");
+
+
+
+                    int index = 0;
+                    while(query.next())
+                    {
+                        firstTeam = query.value(0).toString();
+                        secondTeam = query.value(1).toString();
+                        distance = query.value(2).toInt();
+                        firstTeamS = firstTeam.toStdString();
+                        secondTeamS = secondTeam.toStdString();
+                        if (cityIndices.find(firstTeamS) == cityIndices.end()) {
+                            cityIndices[firstTeamS] = index++;
+                        }
+                        if (cityIndices.find(secondTeamS) == cityIndices.end()) {
+                            cityIndices[secondTeamS] = index++;
+                        }
+
+                        kruskalGraph[cityIndices[firstTeamS]][cityIndices[secondTeamS]] = distance;
+                        kruskalGraph[cityIndices[secondTeamS]][cityIndices[firstTeamS]] = distance;
+                    }
+                    for (auto it = cityIndices.begin(); it != cityIndices.end(); it++)
+                    {
+                        indexToCity[it->second] = it->first;
+                    }
+
+                }
+                else
+                {
+                    msgBox.setText(FAILED_MESSAGE_DATABASE_OPENING);
+                    msgBox.exec();
+                    dbHandler.close();
+                }
             }
 
         }
 
 
-
-
-
-        while(query1.next())
-        {
-            firstTeam = query1.value(0).toString();
-            secondTeam = query1.value(1).toString();
-            distance = query1.value(2).toInt();
-            firstTeamS = firstTeam.toStdString();
-            secondTeamS = secondTeam.toStdString();
-
-            kruskalGraph[cityIndices[firstTeamS]][cityIndices[secondTeamS]] = distance;
-            kruskalGraph[cityIndices[secondTeamS]][cityIndices[firstTeamS]] = distance;
-
-        }
-    }
-    else
-    {
-        msgBox.setText(FAILED_MESSAGE_DATABASE_OPENING);
-        msgBox.exec();
-        dbHandler.close();
-    }
 }
 
-
-
+}
 
 void kruskal::kruskalAlgo()
 {
@@ -203,4 +218,5 @@ void kruskal::showData(Ui::kruskal* ui)
 
 
 }
+
 
