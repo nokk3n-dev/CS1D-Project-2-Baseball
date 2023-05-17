@@ -128,7 +128,7 @@ void prims::createMap()
                 primsIndexToCity[it->second] = it->first;
             }
             teamCounter = index;
-            teamCounter -= 1;
+            //teamCounter -= 1;
 
         }
         else

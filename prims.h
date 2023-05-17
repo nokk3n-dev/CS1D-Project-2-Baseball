@@ -31,9 +31,8 @@ public:
     explicit prims(QWidget *parent = nullptr);
     ~prims();
     void createMap();
-    void primsAlgo();
-    void showData(Ui::prims* ui);
     void primsAlgo(int graph[50][50]);
+    void showData(Ui::prims* ui);
 
 
 private:

@@ -16,13 +16,16 @@ SOURCES += \
     dbhandler.cpp \
     dijk.cpp \
     dfsbfspage.cpp \
+    global.cpp \
     kruskal.cpp \
     main.cpp \
     mainwindow.cpp \
     planningtourpage.cpp \
     prims.cpp \
+    souvenir.cpp \
     stadiumtrippage.cpp \
     team.cpp \
+    unordermap.cpp \
     viewingpage.cpp
 
 HEADERS += \
@@ -34,13 +37,16 @@ HEADERS += \
     dbhandler.h \
     dijk.h \
     dfsbfspage.h \
+    global.h \
     kruskal.h \
     mainwindow.h \
     planningtourpage.h \
     prims.h \
+    souvenir.h \
     stadiumtrippage.h \
     team.h \
     teamList.h \
+    unorderedmap.h \
     viewingpage.h
 
 FORMS += \

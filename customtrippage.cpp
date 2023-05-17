@@ -9,6 +9,7 @@ CustomTripPage::CustomTripPage(QWidget *parent) :
     ui(new Ui::CustomTripPage)
 {
     ui->setupUi(this);
+    extern Map mainSouv;
     QMessageBox msgBox;
     DbHandler dbHandler(DATABASE_PATH,DATABASE_CONNECTION_NAME);
     if(dbHandler.open())
@@ -34,6 +35,8 @@ CustomTripPage::CustomTripPage(QWidget *parent) :
                 // Create Team Object
                 Team t(teamName, stadiumName, seatCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType);
                 TeamList.insert(t);
+
+                mainSouv.insert(stadiumName);
             }
         }
 
