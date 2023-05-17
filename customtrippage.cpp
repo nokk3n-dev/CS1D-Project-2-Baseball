@@ -136,25 +136,3 @@ void CustomTripPage::on_Add_All_Button_clicked()
     }
 }
 
-
-
-void CustomTripPage::on_Sort_Button_clicked()
-{
-    dijk shortestPath;
-    shortestPath.createMap();
-    vector<string> tripOrder;
-    TeamNode<Team> *currentNode = TeamList.getHead();
-    while (currentNode != nullptr)
-    {
-        tripOrder.push_back(currentNode->data.getName());
-        currentNode = currentNode->next;
-    }
-
-    int shortestDistance = 199;
-    shortestDistance = shortestPath.distCalc(tripOrder);
-
-    // Just trying to see if the distCalc function will give me
-    // the distance of trip.
-    ui->SL_Text->setText(QString::number(shortestDistance));
-}
-
