@@ -235,6 +235,7 @@ void ViewingPage::sortByStadiumName()
 
 void ViewingPage::sortBySeat()
 {
+    seatingCapcity = 0;
     // Get data from database
     QMessageBox msgBox;
 
@@ -278,7 +279,8 @@ void ViewingPage::sortBySeat()
 
     showStadiums(ui, sortedSeat);
 
-    // Set seatNum label
+    // Set labels
+    ui->seatingCapcity_label->setText("Seating Capacity");
     ui->seatNum_label->setText(QString::number(seatingCapcity));
 
     // Show seating capacity
@@ -380,6 +382,8 @@ void ViewingPage::sortByTypology()
 
 void ViewingPage::showOpenRoof()
 {
+    int numOpenRoofs = 0;
+
     // Get data from database
     QMessageBox msgBox;
 
@@ -409,6 +413,7 @@ void ViewingPage::showOpenRoof()
                                 // Create Team Object
                                 Team t(teamName, stadiumName, seatCapacity, location, playingSurface, league, dateOpened, distanceToCenter, ballparkTypology, roofType);
                                 sortedSeat.insert(t);
+                                numOpenRoofs++;
                             }
                         }
 
@@ -421,6 +426,10 @@ void ViewingPage::showOpenRoof()
         }
 
     showStadiums(ui, sortedSeat);
+    ui->seatingCapcity_label->setText("Number of Open Roofs: ");
+    ui->seatNum_label->setText(QString::number(numOpenRoofs));
+    ui->seatingCapcity_label->show();
+    ui->seatNum_label->show();
 }
 
 void ViewingPage::sortByDate()

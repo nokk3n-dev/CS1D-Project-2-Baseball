@@ -20,7 +20,7 @@ planningTourPage::planningTourPage(QWidget *parent) :
     this->setPalette(palette);
 
     ui->SelectTripLabel->setStyleSheet("QLabel { background-color : white; }");
-    ui->label->setStyleSheet("QLabel { color : white; }");
+    ui->backDrop->setStyleSheet("QLabel { background-color : white; }");
 }
 
 planningTourPage::~planningTourPage()

@@ -155,6 +155,36 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QLabel" name="backDrop">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>140</y>
+     <width>471</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>25</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <zorder>backDrop</zorder>
+  <zorder>kruskal</zorder>
+  <zorder>prims</zorder>
+  <zorder>Trip_Button</zorder>
+  <zorder>label</zorder>
+  <zorder>dfs</zorder>
+  <zorder>SelectTripLabel</zorder>
+  <zorder>Title</zorder>
  </widget>
  <resources/>
  <connections/>
