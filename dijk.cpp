@@ -101,7 +101,8 @@ void dijk::createMap()
                 graph[startVertex][i] = distances[i];
                 graph[i][startVertex] = distances[i];
             }
-        }
+        } // End Dijkstra's
+
     }
     else
     {
@@ -110,6 +111,48 @@ void dijk::createMap()
         dbHandler.close();
     }
 }
+
+vector<string> dijk::getStadiumsInOrder(const string& startingLocationStadiumName, const vector<string>& stadiumsToSort)
+{
+    vector<string> stadiumsInOrder;
+
+    // Create a copy of the stadiums to sort
+    vector<string> remainingStadiums = stadiumsToSort;
+
+    // Add the starting stadium to the vector
+    stadiumsInOrder.push_back(startingLocationStadiumName);
+
+    // Remove the starting stadium from the remaining stadiums
+    remainingStadiums.erase(remove(remainingStadiums.begin(), remainingStadiums.end(), startingLocationStadiumName), remainingStadiums.end());
+
+    // Calculate the shortest path for each stadium
+    while (!remainingStadiums.empty())
+    {
+        int minDistance = numeric_limits<int>::max();
+        string nextStadium;
+
+        // Find the stadium with the minimum distance from the last added stadium
+        for (const string& stadium : remainingStadiums)
+        {
+            int distance = calcDistance(stadiumsInOrder.back(), stadium);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                nextStadium = stadium;
+            }
+        }
+
+        // Add the stadium with the minimum distance to the vector
+        stadiumsInOrder.push_back(nextStadium);
+
+        // Remove the stadium from the remaining stadiums
+        remainingStadiums.erase(remove(remainingStadiums.begin(), remainingStadiums.end(), nextStadium), remainingStadiums.end());
+    }
+
+    return stadiumsInOrder;
+}
+
+
 int dijk::calcDistance(const string& teamOne, const string& teamTwo)
 {
     int indexOne = dijkCityIndices[teamOne];

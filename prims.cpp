@@ -1,13 +1,14 @@
 #include "prims.h"
 #include "ui_prims.h"
-#include <unordered_map>
 
-const int INF = 10000000;
+const int INF = INT_MAX;
+
 const int NUM_TEAMS = 50;
 int primsGraph[NUM_TEAMS][NUM_TEAMS];
-unordered_map<string, int> primsCityIndices;
-unordered_map<int, string> primsIndexToCity;
+map<string, int> primsCityIndices;
+map<int, string> primsIndexToCity;
 vector<string> primsMstTree;
+int teamCounter = 0;
 int primsMstWeight = 0;
 int primsIndexCounter = 0;
 prims::prims(QWidget *parent) :
@@ -21,6 +22,63 @@ prims::prims(QWidget *parent) :
 
 }
 
+void prims::primsAlgo(int graph[50][50])
+{
+    int edge = 0;
+
+    int visit[teamCounter];
+
+    for (int i = 0; i < teamCounter; i++) {
+        visit[i] = false;
+    }
+
+    edge = 0;
+
+    visit[0] = true;
+
+    int x;
+    int y;
+
+    int totalWeight = 0;
+
+    while (edge < teamCounter - 1)
+    {
+
+        int minWeight = INT_MAX;
+        x = 0;
+        y = 0;
+
+        for (int i = 0; i < teamCounter; i++)
+        {
+            if (visit[i]) {
+                for (int j = 0; j < teamCounter; j++)
+                {
+                    if (!visit[j] && graph[i][j])
+                    {
+                        if (minWeight > graph[i][j])
+                        {
+                            minWeight = graph[i][j];
+                            x = i;
+                            y = j;
+                        }
+                    }
+                }
+            }
+        }
+
+        totalWeight += graph[x][y];
+        int z = graph[x][y];
+        string path =  primsIndexToCity[x] + " ---> " + primsIndexToCity[y] +  " " + to_string(z);
+        primsMstTree.push_back(path);
+
+        visit[y] = true;
+        edge++;
+    }
+
+
+    primsMstWeight = totalWeight;
+}
+
 prims::~prims()
 {
     delete ui;
@@ -29,115 +87,71 @@ prims::~prims()
 
 void prims::createMap()
 {
-    QMessageBox msgBox;
-    QString team;
-    string teamS;
-    QString firstTeam;
-    QString secondTeam;
-    string firstTeamS;
-    string secondTeamS;
-    int distance = 0;;
-    int currentIndex = 0;
-
-    DbHandler dbHandler(DATABASE_PATH,DATABASE_CONNECTION_NAME);
-    if(dbHandler.open())
     {
-        QSqlQuery query("SELECT Stadium_Name FROM MLB_Information");
-        QSqlQuery query1("SELECT Start_Stadium, End_Stadium, distance FROM Distance");
+        QMessageBox msgBox;
+        QString team;
+        string teamS;
+        QString firstTeam;
+        QString secondTeam;
+        string firstTeamS;
+        string secondTeamS;
+        int distance = 0;;
 
-        while(query.next())
+        DbHandler dbHandler(DATABASE_PATH,DATABASE_CONNECTION_NAME);
+        if(dbHandler.open())
         {
-            team = query.value(0).toString();
-            teamS = team.toStdString();
-            if (primsCityIndices.find(teamS) == primsCityIndices.end())
-            {
-                primsCityIndices[teamS] = currentIndex;
-                primsIndexToCity[currentIndex] = teamS;
-                currentIndex++;
+            QSqlQuery query("SELECT Start_Stadium, End_Stadium, distance FROM Distance");
 
+
+
+            int index = 0;
+            while(query.next())
+            {
+                firstTeam = query.value(0).toString();
+                secondTeam = query.value(1).toString();
+                distance = query.value(2).toInt();
+                firstTeamS = firstTeam.toStdString();
+                secondTeamS = secondTeam.toStdString();
+                if (primsCityIndices.find(firstTeamS) == primsCityIndices.end()) {
+                    primsCityIndices[firstTeamS] = index++;
+                }
+                if (primsCityIndices.find(secondTeamS) == primsCityIndices.end()) {
+                    primsCityIndices[secondTeamS] = index++;
+                }
+
+                primsGraph[primsCityIndices[firstTeamS]][primsCityIndices[secondTeamS]] = distance;
+                primsGraph[primsCityIndices[secondTeamS]][primsCityIndices[firstTeamS]] = distance;
             }
 
+            for (auto it = primsCityIndices.begin(); it != primsCityIndices.end(); it++)
+            {
+                primsIndexToCity[it->second] = it->first;
+            }
+            teamCounter = index;
+            teamCounter -= 1;
+
         }
-        primsIndexCounter = currentIndex;
-
-
-
-
-
-        while(query1.next())
+        else
         {
-            firstTeam = query1.value(0).toString();
-            secondTeam = query1.value(1).toString();
-            distance = query1.value(2).toInt();
-            firstTeamS = firstTeam.toStdString();
-            secondTeamS = secondTeam.toStdString();
-
-            primsGraph[primsCityIndices[firstTeamS]][primsCityIndices[secondTeamS]] = distance;
-            primsGraph[primsCityIndices[secondTeamS]][primsCityIndices[firstTeamS]] = distance;
-
+            msgBox.setText(FAILED_MESSAGE_DATABASE_OPENING);
+            msgBox.exec();
+            dbHandler.close();
         }
     }
-    else
-    {
-        msgBox.setText(FAILED_MESSAGE_DATABASE_OPENING);
-        msgBox.exec();
-        dbHandler.close();
-    }
+
+
 }
 
-void prims::primsAlgo()
-{
-    vector<int> parent(NUM_TEAMS, -1);
-    vector<int> key(NUM_TEAMS, INF);
-    vector<bool> inMST(NUM_TEAMS, false);
-
-    key[0] = 0;
-
-    for (int i = 0; i < NUM_TEAMS - 1; i++) {
-        int u = -1;
-        for (int j = 0; j < NUM_TEAMS; j++) {
-            if (!inMST[j] && (u == -1 || key[j] < key[u])) {
-                u = j;
-            }
-        }
-
-        inMST[u] = true;
-
-        for (int v = 0; v < NUM_TEAMS; v++)
-        {
-            if (primsGraph[u][v] != 0 && !inMST[v] && primsGraph[u][v] < key[v])
-            {
-                key[v] = primsGraph[u][v];
-                parent[v] = u;
-            }
-        }
-    }
-
-    int totalWeight = 0;
-    for (int i = 1; i < primsIndexCounter; i++)
-    {
-        totalWeight += primsGraph[i][parent[i]];
-    }
-    primsMstWeight = totalWeight;
-
-
-    for (int i = 1; i < primsIndexCounter; i++)
-    {
-        string msttreee = primsIndexToCity[parent[i]] + " -> " + primsIndexToCity[i];
-        primsMstTree.push_back(msttreee);
-    }
-}
 
 
 void prims::showData(Ui::prims* ui)
 {
     createMap();
-    primsAlgo();
+    primsAlgo(primsGraph);
+
 
 
     QString pathName;
-
-
 
     ui->primsDisplayWidget->setColumnCount(2);
     ui->primsDisplayWidget->setRowCount(35);
@@ -161,3 +175,5 @@ void prims::showData(Ui::prims* ui)
 
 
 }
+
+

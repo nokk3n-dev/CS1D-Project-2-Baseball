@@ -165,4 +165,3 @@ void StadiumTripPage::on_ButtonPurchase_clicked()
         QMessageBox::information(this,QObject::tr("System Message"),tr("Please Enter a value above 0."),QMessageBox::Ok);
     }
 }
-

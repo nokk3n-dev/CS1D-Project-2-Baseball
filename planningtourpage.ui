@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>961</width>
-    <height>396</height>
+    <width>900</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="kruskal">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>620</y>
+     <x>200</x>
+     <y>400</y>
      <width>150</width>
      <height>50</height>
     </rect>
@@ -34,8 +34,8 @@
   <widget class="QPushButton" name="prims">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>620</y>
+     <x>380</x>
+     <y>400</y>
      <width>150</width>
      <height>50</height>
     </rect>
@@ -52,7 +52,7 @@
   <widget class="QPushButton" name="Trip_Button">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>270</x>
      <y>140</y>
      <width>381</width>
      <height>50</height>
@@ -68,26 +68,13 @@
     <string>Plan your custom trip</string>
    </property>
   </widget>
-  <widget class="Line" name="line">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>230</y>
-     <width>1001</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>290</x>
      <y>240</y>
      <width>341</width>
-     <height>41</height>
+     <height>51</height>
     </rect>
    </property>
    <property name="font">
@@ -104,10 +91,13 @@
    </property>
   </widget>
   <widget class="QPushButton" name="dfs">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>600</x>
-     <y>620</y>
+     <x>560</x>
+     <y>400</y>
      <width>150</width>
      <height>50</height>
     </rect>
@@ -124,7 +114,7 @@
   <widget class="QLabel" name="SelectTripLabel">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>220</x>
      <y>190</y>
      <width>471</width>
      <height>61</height>
@@ -146,10 +136,10 @@
   <widget class="QLabel" name="Title">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>40</y>
-     <width>491</width>
-     <height>61</height>
+     <x>150</x>
+     <y>30</y>
+     <width>611</width>
+     <height>91</height>
     </rect>
    </property>
    <property name="font">
@@ -165,6 +155,36 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QLabel" name="backDrop">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>140</y>
+     <width>471</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>25</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <zorder>backDrop</zorder>
+  <zorder>kruskal</zorder>
+  <zorder>prims</zorder>
+  <zorder>Trip_Button</zorder>
+  <zorder>label</zorder>
+  <zorder>dfs</zorder>
+  <zorder>SelectTripLabel</zorder>
+  <zorder>Title</zorder>
  </widget>
  <resources/>
  <connections/>

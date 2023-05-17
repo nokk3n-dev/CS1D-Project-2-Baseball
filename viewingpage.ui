@@ -19,7 +19,7 @@
      <x>25</x>
      <y>100</y>
      <width>1100</width>
-     <height>311</height>
+     <height>281</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -56,7 +56,7 @@
   <widget class="QComboBox" name="sortBox">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>30</x>
      <y>480</y>
      <width>350</width>
      <height>40</height>
@@ -121,7 +121,7 @@
   <widget class="QLabel" name="sortByLabel">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>30</x>
      <y>410</y>
      <width>350</width>
      <height>70</height>
@@ -580,7 +580,7 @@
   <widget class="QLabel" name="viewTeam_label">
    <property name="geometry">
     <rect>
-     <x>640</x>
+     <x>770</x>
      <y>410</y>
      <width>350</width>
      <height>70</height>
@@ -602,7 +602,7 @@
   <widget class="QComboBox" name="viewTeam_box">
    <property name="geometry">
     <rect>
-     <x>640</x>
+     <x>770</x>
      <y>480</y>
      <width>350</width>
      <height>40</height>
@@ -618,6 +618,50 @@
      <string/>
     </property>
    </item>
+  </widget>
+  <widget class="QLabel" name="seatingCapcity_label">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>410</y>
+     <width>411</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>25</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Seating Capacity</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="seatNum_label">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>460</y>
+     <width>350</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>25</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
  </widget>
  <resources/>
