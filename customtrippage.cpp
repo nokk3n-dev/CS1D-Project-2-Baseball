@@ -104,12 +104,41 @@ void CustomTripPage::on_Trip_Button_clicked()
     TripList.insertFront(startingLocNode->data);
     delete startingLocNode;
     StadiumTripPage TripPage(TripList, this);
+    this->close();
     TripPage.setModal(true);
     TripPage.exec();
-    //Inserting starting location as the head
-
-//    //Sending data to the trip page
-//    TripPage.SendTrip(TripList);
 }
 
+
+
+void CustomTripPage::on_Add_All_Button_clicked()
+{
+    QString startingLoc = ui->StartingLoc_Dropdown->currentText();
+
+    for (int i = 0; i < ui->Stadium_Dropdown->count(); i++) {
+        QString teamToAdd = ui->Stadium_Dropdown->itemText(i);
+
+        if (teamToAdd != startingLoc) {
+            QList<QListWidgetItem *> existingItems = ui->listWidget->findItems(teamToAdd, Qt::MatchExactly);
+            if (existingItems.isEmpty()) {
+                ui->listWidget->addItem(teamToAdd);
+                TeamNode<Team> *currentNode = TeamList.getHead();
+                while (currentNode != nullptr) {
+                    if (currentNode->data.getName() == teamToAdd.toStdString()) {
+                        TripList.insert(currentNode->data);
+                        break;
+                    }
+                    currentNode = currentNode->next;
+                }
+            }
+        }
+    }
+}
+
+
+
+void CustomTripPage::on_Sort_Button_clicked()
+{
+
+}
 
